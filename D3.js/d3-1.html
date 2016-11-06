@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3</title>
+</head>
+<body>
+	<p>Apple</p>
+	<p>Pear</p>
+	<p>Banana</p>
+
+
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript">
+	var str="China";
+	var body = d3.select("body");
+	var p = body.selectAll("p");
+
+	p.datum(str); //data()和datum()可以把数据和元素绑在一起, data绑的是复数，datum绑的是单数, 这里如果用data的话会把”China"拆成["c","h","i","n","a"]
+	p.text(function(d,i){return "第"+i+"个元素绑定的数据是"+d;});
+	//结果是“第0个元素绑定的数据是China，第1个元素绑定的数据是China，第2个元素绑定的数据是China”
+	//d表示数据，也就是与某元素绑定的数据；
+	//i代表索引，代表数据的索引号，从0开始
+	
+</script>
+</html>
