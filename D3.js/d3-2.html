@@ -3,6 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>D3-svg</title>
+	<style>
+	.axis path,
+	.axis line{fill:none;
+		stroke:black;
+		shape-rendering: crispEdges;}
+	.axis text{
+		font-family:sans-serif;
+		font-size:10px;
+	}
+
+	</style>
 </head>
 <body>
 	
@@ -15,8 +26,24 @@
 	var height = 300; //画布的高度
 	var svg = d3.select("body").append("svg").attr("width",width).attr("height",height); //创建一个svg元素，高度和宽度设定好
 
-	var dataset=[250,210,170,130,90]; //给出一组数据，进行数据可视化
+	var dataset=[1.2,2.3,0.9,1.5,3.3]; //给出一组数据，进行数据可视化,要对dataset做一个放大，不然太小在图上显示不好看
 	var rectHeight = 25;
+	//scale有一个比例尺的方法，用的domain和range,domain传入的是原来的值，range表示缩放的程度
+	//d3.min和d3.max可以选出一组data里的最大值和最小值
+	//d3.scaleLinear()指的是按照线性比例来缩放
+	var min = d3.min(dataset), max = d3.max(dataset), 
+	linear = d3.scaleLinear()
+	.domain([min,max])
+	.range([0,300]),
+	linearData = linear(dataset);
+
+	//加一个坐标轴
+	var axis=d3.axisBottom() //d3.svg.aix()是d3里坐标轴的组件，用于在svg里生成axis元素
+	.scale(linear)//制定比例尺
+	 //指定刻度的方向，"bottom"表示在坐标轴的下方显示
+	.ticks(7); //制定刻度的数量
+
+
 	svg.selectAll("rect") //选择svg里面所有rect元素
 	.data(dataset)  //绑定数组
 	.enter()  //制定选择集的enter部分
@@ -27,10 +54,21 @@
 		return i * rectHeight;
 	})
 	.attr("width",function(d){
-		return d;
+		return linear(d); //对d做一个linear()的缩放
 	})
 	.attr("height",rectHeight-2)
 	.attr("fill","steelblue");
+
+	svg.append("g").attr("class","axis").attr("transform","translate(20,130)")
+	.call(axis);
+
+	//还可以做一个序数比例尺, 把所有的index换成color
+	var index = [0, 1, 2, 3, 4], color =["red", "blue", "green", "yellow", "black"],
+	ordinal = d3.scaleOrdinal().domain(index).range(color); //直接用domain和range传入数组
+
+	d3.select("body").selectAll("div").data(index).enter().append("span")//这一块与前面一致
+	.text(function(d,i){return " "+ordinal(d);}); //callback函数把index换成color
+
 </script>	
 </body>
 </html>
