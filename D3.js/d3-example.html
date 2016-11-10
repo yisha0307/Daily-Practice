@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 tutorial</title>
+</head>
+<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var linearScale = d3.scaleLinear().domain([0,100]).range([0,1])
+.clamp(true); //clamp把output定死在[0，1]中间，不会超出来
+
+console.log(linearScale.invert(0.5)); //50
+
+var timeScale = d3.scaleTime().domain([new Date(2016,0,1),new Date()]).range([0,100]);
+
+console.log(timeScale(new Date(2016,4,15))); //
+43.04254080478535
+
+console.log(timeScale.invert(50)); //Sun Jun 05 2016 19:44:20 GMT+0800 (CST)
+
+var quantizeScale = d3.scaleQuantize().domain([0,100])
+.range(["red","green"]); //scaleQuantize()的意思是把数字转化成别的形式，比如string
+
+console.log(quantizeScale(20)); //red
+console.log(quantizeScale(90));//green
+console.log(quantizeScale.invertExtent('green')); //[50,100] 这里用的inverExtent,而不是invert, 因为返回的是range
+
+var ordinalScale = d3.scaleOrdinal()
+.domain(["poor","good","great"])
+.range(['red','white','green']);
+console.log(ordinalScale('good')); //white
+
+d3.json('data.json',function(data){
+	var min = d3.min(data,function(d,i){
+		return d.age;});
+	var max = d3.max(data,function(d){return d.age;});
+	var extent = d3.extent(data,function(d){return d.age});
+	console.log(min+","+max);//13,38
+	console.log(extent); //[13,38]
+	var scale = d3.scaleLinear().domain(extent).range([0,100]);
+
+	var ages = d3.set(data,function(d){
+		return d.age;
+	}) //这样出来的是set{$24:'24',$25:'25',$12:'12'}
+	console.log(ages.values());//【24，24，12】
+	//用set的callback函数可以选出unique的数字，数字不会有重复
+})
+
+d3.csv('data.csv',function(data){
+	console.log(data);
+})
+
+d3.tsv('data.tsv',function(data){
+	console.log(data);
+})
+</script>	
+</body>
+</html>

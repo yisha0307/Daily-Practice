@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 example2</title>
+	<style>
+	div{
+		display: inline-block;
+		border: 1px solid black;
+	}
+	a{display: block;}
+	</style>
+</head>
+<body>
+	<div class="title">
+	<a href="#">About</a>
+	<a href="#">Product</a>
+	<a href="#">Contact</a>
+	</div>
+
+	<a class="action" href="#">Buy Now</a>
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- <script>
+var link = d3.select("div");
+var linkA = d3.selectAll('a');
+console.log(linkA.nodes());
+
+var divlinks = d3.select('div').selectAll('a');
+console.log(divlinks.nodes());
+
+console.log(d3.selectAll('div a').nodes()); //d3也可以用css的选择器
+
+var allLinks = d3.selectAll(document.links);
+console.log(allLinks.size()); //4
+//size() helps to know the number of the elements
+
+var secondlink = d3.selectAll('a:nth-child(2)')
+.attr('href','http://google.com')
+.style('color','red')
+.classed('red',true) //加一个class="red"
+.text('Invertory')
+.html('Invertory <b>sale</b>'); //可以用.text加plain text，或者用html标签加html语言
+
+</script> -->
+<script>
+d3.select('.title')
+	.insert('button','a:nth-child(1)') //如果只是insert('button')就和append一样，如果后面加个一个元素就会加在那个元素前面，所以是放在第一个a前面
+		.html('Inventory <b>SALE</b>') //同一个element就是两个indent，如果是不同的element就是4个indent
+	.append('button')
+		.style('display','block')
+		.text('submit');
+
+d3.select('.action').remove();
+</script>
+</body>
+</html>

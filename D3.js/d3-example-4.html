@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3-v4</title>
+	<style>
+	.chart{
+		background-color: lightgray;
+		border:1px solid black;
+		width:425px;
+		height:625px;
+	}
+	</style>
+</head>
+<body>
+<div class="chart"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+var margin = { top: 10, right:20, bottom:40, left:25};
+var width = 425 -margin.left -margin.right;
+var height = 625-margin.top - margin.bottom;
+
+var svg = d3.select('.chart')
+	.append('svg')
+	.attr('width',width+margin.left+margin.right)
+	.attr('height',height + margin.top + margin.bottom)
+	.append('g')
+	.attr('transform',`translate(${margin.left}, ${margin.top})`);
+
+svg.append('rect')
+	.attr('width',width/2)
+	.attr('height',height)
+	.style('fill','lightblue')
+	.style('stroke','green');
+
+svg.append('rect')
+	.attr('x',width/2)
+	.attr('width',width/2)
+	.attr('height',height)
+	.style('fill','lightblue')
+	.style('stroke','green');
+
+var yscale = d3.scaleLinear()
+	.domain([0,100])
+	.range([height,0]); //因为y轴的方向是相反的
+
+var yAxis= d3.axisLeft(yscale).ticks(5,'%');//ticks()其实还是suggestion，不一定和指定的一样
+//ticks()可以指定第二个参数，比如'%',会显示成百分号；'.1s'会显示一位小数
+//如果要精确的指标可以用tickValues([8,19,43,77])
+svg.call(yAxis);
+
+var xscale = d3.scaleTime()
+	.domain([new Date(2016,0,1,6), new Date(2016,0,1,9)])
+	.range([0,width]);
+var xAxis = d3.axisBottom(xscale)
+.ticks(d3.timeMinute.every(45))
+.tickSizeInner(10)
+.tickSizeOuter(20)
+.tickPadding(10); //labels on the bottom
+svg
+	.append('g')
+	 .attr('transform',`translate(0,${height})`)
+	.call(xAxis);
+
+</script>	
+</body>
+</html>

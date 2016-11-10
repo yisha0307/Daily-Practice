@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Egghead d3 v4</title>
+	<style>
+		.chart{
+			background-color: lightgray;
+			border:1px solid black;
+			min-width:200px;
+			min-height:350px;
+		}
+		.bar{height:30px;
+			fill: lightgreen;
+			stroke-width:1px ;
+			stroke:black;
+			text-transform: uppercase;}
+		.bar : hover{fill:lightblue;}
+
+	</style>
+</head>
+<body>
+	<div class="chart">
+		<div>billy</div>
+		<div>cindy</div>
+		<div>walter</div>
+	</div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+	var scores=[
+	{name:'alice', score:96},
+	{name:'billy', score:83},
+	{name:'cindy', score:91},
+	{name:'david', score:96},
+	{name:'emily', score:88}
+	];
+
+	// var update = d3.select('.chart')
+	// 	.selectAll('div') //虽然div还不存在，但是要告诉d3 divs should correspond to data
+	// 	.data(scores, function(d){
+	// 		return d ? d.name : this.innerText;
+	// 	})//把data和dom绑在一起, 现在只有data没有elements
+	// 	//在data里面多加一个function就可以过滤掉一样的元素
+	// 	.style('color','blue'); //existed elemenets 是blue
+
+	// var enter = update.enter()
+	// 	.append('div')
+	// 	.text(function(d){
+	// 		return d.name;
+	// 	})
+	// 	.style('color','green');
+
+	// update.exit().remove(); //把walter删掉了，因为没有和data绑在一起，只是个dom
+
+	// update.merge(enter) //把update和enter数据merge在一起
+	// 	.style('width', d => d.score + 'px')
+	// 	.attr('class','bar');
+		
+	
+
+	function scaleBar(selection, scale){
+		selection.style('transform', 'scaleX('+ scale+')');
+	}
+
+	function fade(selection,opacity){
+		selection.style('fill-opacity',opacity);
+	}
+	var bar = d3.select('.chart')
+		.append('svg')
+			.attr('width',225)
+			.attr('height','300')
+		.selectAll('rect')
+		.data(scores)
+		.enter()
+			.append('g') //g: basically a container for other elements
+			.attr('transform', (d,i) => 'translate(0, '+i*33 + ')');
+
+		bar.append('rect')
+			.style('width', d => d.score +'px')
+			.attr('class','bar')
+			.on('mouseover',function(d,i,elements){
+				//d3.select(this).classed('barOn',true)
+				d3.select(this).call(scaleBar,2);
+				d3.selectAll(elements)
+				.filter(':not(:hover)')
+				.call(fade,0.5);
+			})
+			.on('mouseout',function(d,i,elements){
+				d3.select(this).call(scaleBar,1);
+				d3.selectAll(elements).
+				call(fade,1)
+			});
+			
+		bar.append('text')
+			.attr('y',20)
+			.text(function(d){
+				return d.name;
+			})
+
+</script>
+</body>
+</html>
