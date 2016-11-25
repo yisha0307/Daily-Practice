@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter 3 case</title>
+	<style>
+		#tooltip{position: absolute;
+			border:1px solid black;
+			background-color: white;}
+
+	</style>
+</head>
+<body>
+<p><a href="#" class='tooltip' title="这是我的超链接提示1.">提示1.</a></p>	
+<p><a href="#" class='tooltip' title="这是我的超链接提示2.">提示2.</a></p>	
+<p><a href='#' title='这是自带提示1.'>自带提示1.</a></p>
+<p><a href='#' title='这是自带提示2.'>自带提示2.</a></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	 $('a.tooltip').mouseover(function(e){
+		var tooltip ='<div id="tooltip">'+ this.title +'</div>'; //创建div元素
+		$('body').append(tooltip);
+		$('#tooltip').css({
+			'top':e.pageY+'px',
+			'left':e.pageX+'px'
+		}).show('fast');	//可以在鼠标滑过的时候显示div，设置的x坐标和y坐标使得div显示在鼠标旁边；
+		//要设置top和left的值元素必须是absolute或者relative
+		this.myTitle = this.title;
+		this.title="";	//清空title值
+	}).mouseout(function(){
+		$('#tooltip').remove();
+		this.title=this.myTitle;
+	}).mousemove(function(e){	//加一个mousemove可以让提示随着鼠标走
+		$('#tooltip').css({
+			'top':e.pageY +'px',
+			'left':e.pageX +'px'
+		})
+	})
+});
+</script>
+</body>
+</html>
