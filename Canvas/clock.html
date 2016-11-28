@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clock-canvas</title>
+</head>
+<body>
+	<canvas id="canvas" width = '150' height = '150'></canvas>
+
+	<script type="text/javascript">
+		function clock(){
+			var canvas = document.getElementById('canvas');
+			if(canvas.getContext('2d')){
+				var ctx = canvas.getContext('2d');
+			}else{alert('your brower does not supprt canvas tag.')}
+
+			var now = new Date();
+			ctx.save();
+			ctx.clearRect(0,0,150,150);
+			ctx.translate(75,75);
+			ctx.scale(0.4,0.4); //在水平和垂直方向上缩小60%
+			ctx.rotate(-Math.PI/2);
+			ctx.strokeStyle = 'black';
+			ctx.fillStyle = 'white';
+			ctx.lineWidth = 8;
+			ctx.lineCap = 'round';
+
+			//hour marks
+			ctx.save();
+			for(var i = 0; i<12; i++){
+				ctx.beginPath();
+				ctx.rotate(Math.PI/6);
+				ctx.moveTo(100,0);
+				ctx.lineTo(120,0);
+				ctx.stroke();
+			}
+			ctx.restore();
+
+			//minutes marks
+			ctx.save();
+			ctx.lineWidth = 5;
+			for(var i = 0; i<60; i++){
+				if(i%5 !=0){
+					ctx.beginPath();					
+					ctx.moveTo(117,0);
+					ctx.lineTo(120,0);
+					ctx.stroke();
+				}
+				ctx.rotate( Math.PI/30); //如果放在if里面会少一些，因为被5整除的那些不会旋转
+			}
+			ctx.restore();
+
+			var sec = now.getSeconds();
+			var min = now.getMinutes();
+			var hr = now.getHours();
+			hr = hr>12? hr-12 : hr; //转换一下hours的格式，只有0-12这个区间
+
+			ctx.fillStyle = 'black';
+			//时针
+			ctx.save();
+			ctx.rotate((Math.PI*hr)/6 + (Math.PI/360)*min + (Math.PI/21600)*sec);
+			ctx.lineWidth = 14;
+			ctx.beginPath();
+			ctx.moveTo(-20,0);
+			ctx.lineTo(80,0);
+			ctx.stroke();
+			ctx.restore();
+
+			//分针
+			ctx.save();
+			ctx.rotate((Math.PI*min)/30 + (Math.PI*sec)/1800);
+			ctx.lineWidth = 10;
+			ctx.beginPath();
+			ctx.moveTo(-28,0);
+			ctx.lineTo(112,0);
+			ctx.stroke();
+			ctx.restore();
+
+			//秒针
+			ctx.save();
+			ctx.rotate((Math.PI*sec)/30);
+			ctx.strokeStyle ='red';
+			ctx.fillStyle = 'red';
+			ctx.lineWidth = 6;
+			ctx.beginPath();
+			ctx.moveTo(-30,0);
+			ctx.lineTo(83,0);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.arc(0,0,10,0,Math.PI*2, true);
+			ctx.fill();
+			ctx.beginPath();
+			ctx.arc(95,0,10,0,Math.PI*2, true);
+			ctx.stroke();
+			ctx.fillStyle = "rgba(0,0,0,0)";
+			ctx.arc(0,0,3,0,Math.PI *2, true);
+			ctx.fill();
+			ctx.restore();
+
+			ctx.beginPath();
+			ctx.lineWidth=14;
+			ctx.strokeStyle = '#325FA2';
+			ctx.arc(0,0,142,0,Math.PI*2, true);
+			ctx.stroke();
+
+			ctx.restore();
+			window.requestAnimationFrame(clock);
+
+		}
+
+		window.onload = function(){window.requestAnimationFrame(clock)};
+
+	</script>
+</body>
+</html>
