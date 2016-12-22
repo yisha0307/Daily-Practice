@@ -1,0 +1,250 @@
+@import "compass";
+@import 'partials/normalize';
+@import 'compass/css3';
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+$bcg-color-greyblue:#557b8e;
+$bcg-color-green:#c3e1cc;
+$new-color:#3fb8af;
+$default-bcg:#ffffff !default;
+$default-text:#0d0d0d;
+$text-grey:#767777;
+
+* {
+	box-sizing: border-box;
+}
+
+.content-show{
+	display: inline-block;
+}
+
+.content-hide{
+	display: none;
+}
+
+html{
+  width:100%;
+  min-height:100%;
+  @include background(linear-gradient(to right top,$bcg-color-greyblue 0%, $bcg-color-green)100% no-repeat);
+}
+body{
+	font-family: 'Lato';
+}
+
+#job-opening, #form{
+	width:500px;
+	margin:50px auto;
+}
+
+h2{
+	color:$default-bcg;
+	font-weight: 300;
+}
+#referral-form{
+	width:500px;
+	height:auto;
+	background-color: $default-bcg;
+	border-radius:10px;
+	.opening{
+		border-bottom: 1px solid red;
+		border-color:lighten($text-grey, 40%);
+		transform: translate3d(0, 0, 0);
+   		transition: all 0.4s ease-in-out;
+		&:last-child{
+			border:none;
+		}
+		.title{
+			padding:25px 30px;
+			cursor: pointer;
+			.job-title{
+				display: inline-block;
+				margin-bottom: 12px;
+				font-weight:400;
+			}
+			.new{
+				margin-left: 12px;
+				background-color: $new-color;
+				padding: 1px 5px;
+				color:$default-bcg;
+				display: inline-block;
+				border-radius:3px;
+				font-size:0.8em;
+				font-weight: 300;
+				letter-spacing: 3px;
+			}	
+			.subtitle{
+				margin-top: 5px;
+				display: flex;
+				justify-content: space-between;
+				.job-sort{
+					color:$text-grey;
+					font-size:0.9em;
+					font-weight:300;
+					align-items:center;
+				}
+				.opening-date{
+					@extend .job-sort;
+				}				
+				.referbtn{
+					border-style: none;
+					margin-top:-10px;
+					background-color: $default-bcg;
+					border: 1px solid lighten($text-grey, 40%);
+					padding:8px 12px;
+					border-radius: 3px;
+					color:$text-grey;
+					font-weight:300;
+					font-size: 0.8em;
+					transform: translate3d(0, 0, 0);
+	   				transition: all 0.4s ease-in-out;
+					&:hover{
+						background-color: lighten($text-grey, 50%);
+						@include box-shadow(0 0 15px rgba(0,0,0,0.2));
+					}
+				}
+			}	
+		}
+		&:hover{
+				@include box-shadow(0 0 20px rgba(0,0,0,0.2));
+			}
+			ul{
+				margin:5px 30px 30px 20px;
+				li{
+					list-style: circle;
+					font-weight: 300;
+					color:darken($text-grey, 10%);
+					margin:10px 0;
+					letter-spacing: 0.5px;
+					font-size:0.9em;
+				}
+			}
+	}
+}
+.returnitems{
+	color:$default-bcg;
+	i{
+		display: inline-block;
+		margin-right: 10px;
+	}
+	#return{
+		margin-top: -3px;
+		font-weight:300;
+		font-size:0.9em;
+		display: inline-block;
+	}
+	&:hover{
+		color:darken($default-bcg, 10%);
+		@include text-shadow(0 0 5px $text-grey);
+		cursor: pointer;
+	}
+}
+
+#form11{
+	height:auto;
+	width:500px;
+	background-color: $default-bcg;
+	border-radius: 10px;
+	h2{
+		padding-top: 100px;
+		color:$default-text;
+		font-weight:400;
+		text-align: center;
+	}
+	p{
+		color:$text-grey;
+		font-size:0.8em;
+		font-weight:300;
+		text-align: center;
+		margin-top:-10px;
+		span{
+			color: darken($bcg-color-green, 30%);
+			font-weight: 400;
+		}
+		padding-bottom: 20px;
+	}
+}
+
+%no-style-inputs{
+	border:0 none;
+	font-size: 1rem;
+	outline: none;
+	line-height: 2.5rem;
+	margin-right: 40px;
+	margin-left: 40px;
+	border-bottom: 1px solid lighten($text-grey, 40%);
+	&::-webkit-input-placeholder{
+		font-weight: 300;
+	}
+}
+
+%submit{
+	width: 417px;
+    margin: 39px auto;
+    height: 46px;
+    border-radius: 10px;
+    border-style: none;
+    background: transparent;
+    border: 1px solid $bcg-color-green;
+    color:$bcg-color-green;
+    font-weight: 300;
+    outline: none;
+}
+#form-parent{
+	display: flex;
+	flex-direction:column;
+	input{
+		margin:10px 0 10px 0;
+	}
+	#name, #email,#jobjob{
+		@extend %no-style-inputs;
+	}
+	label{
+		display: inline-block;
+		font-size: 0.6rem;
+		font-weight: 300;
+		color:darken($bcg-color-green, 30%);
+		margin-left: 40px;
+	}
+	#jobjob{
+		font-weight: 300;
+		font-size: 1rem;
+		display: block;
+		color:$default-text;
+		margin-left: 0;
+		margin-top:-10px;
+	}
+	select{
+		margin-left:30px;
+		width:180px;
+		height:40px;
+		border-radius:5px;
+		cursor: pointer;	
+		font-size:0.9rem;
+		border:0 none;
+		background:none;
+		outline: 0;
+		border:1px solid lighten($text-grey, 40%);
+	}
+	option{
+		padding: 10px;
+		padding-right: 50px;
+	}
+	#submit{
+		@extend %submit;
+		&:hover{
+			color:darken($bcg-color-green, 30%);
+			border-color: darken($bcg-color-green, 30%);
+		}
+	}
+	#reset{
+		@extend %submit;
+		border:none;
+		margin-top: -10px;
+		color:$text-grey;
+		background-color: lighten($text-grey, 50%);
+		margin-bottom: 80px;
+		&:hover{
+			background-color: lighten($text-grey, 45%);
+		}
+	}
+}
