@@ -97,6 +97,7 @@ h2{
 					font-size: 0.8em;
 					transform: translate3d(0, 0, 0);
 	   				transition: all 0.4s ease-in-out;
+					outline:0;
 					&:hover{
 						background-color: lighten($text-grey, 50%);
 						@include box-shadow(0 0 15px rgba(0,0,0,0.2));
