@@ -6,6 +6,8 @@ Solar System: https://yisha0307.github.io/Daily-Practice/Canvas/Solar-system.htm
      
 Clock:  https://yisha0307.github.io/Daily-Practice/Canvas/clock.html      
 
-Referral form: https://yisha0307.github.io/Daily-Practice/React/Referral-form/Referral.html  
+Referral form: https://yisha0307.github.io/Daily-Practice/React/Referral-form/Referral.html    
+
+Date-picker: https://yisha0307.github.io/Daily-Practice/React/date-picker/date-picker.html 
 
 
