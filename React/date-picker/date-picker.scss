@@ -1,0 +1,153 @@
+@import "compass";
+@import "compass/css3";
+
+$primary: #b670f4;
+$radius: 12px;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f7fa;
+  color: #333;
+}
+
+.calendar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -225px;
+  margin-left: -195px;
+  width: 360px;
+  padding: 15px;
+  box-shadow: 1px 1px 20px 0 rgba(0, 0, 0, 0.4);
+  border-radius: $radius;
+  overflow: hidden;
+
+  &--nav {
+    margin: -15px -15px 15px;
+    padding: 0 15px;
+    background-color: $primary;
+    color: #fff;
+    height: 70px;
+    position: relative;
+
+    a {
+      position: absolute;
+      cursor: pointer;
+      left: 10px;
+      font-size: 32px;
+      line-height: 1;
+      top: 16px;
+      width: 30px;
+      text-align: center;
+      display: inline-block;
+      color: transparentize(#fff, 0.6);
+      user-select: none;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &:last-child {
+        left: auto;
+        right: 10px;
+      }
+    }
+
+    h1 {
+      margin: 0;
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 66px;
+      user-select: none;
+    }
+
+    small {
+      font-weight: 300;
+      font-size: 60%;
+    }
+  }
+
+  &--days {
+    font-size: 0;
+    
+    span {
+      width: 14.28571%;
+      display: inline-block;
+      text-align: center;
+      user-select: none;
+      cursor: pointer;
+      margin: 8px 0;
+      line-height: 34px;
+      position: relative;
+      font-size: 16px;
+
+      &.label {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 14px;
+        cursor: initial;
+      }
+
+      &.active {
+        font-weight: 700;
+        background-color: transparentize($primary, 0.95);
+        border-radius: $radius;
+      }
+
+      &.muted {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      &.between {
+        border-radius: 0;
+      }
+
+      &.start, &.between, &.end {
+        background-color: #b670f4;
+        color: #fff;
+      }
+
+      &.start {
+        border-radius: $radius 0 0 $radius;
+      }
+
+      &.end {
+        border-radius: 0 $radius $radius 0;
+      }
+
+      &.start.end {
+        border-radius: $radius;
+      }
+
+      &.between:nth-child(7n):after, &.start:nth-child(7n):after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        background-color: #b670f4;
+        width: 20px;
+      }
+
+      &.between:nth-child(7n + 1):after, &.end:nth-child(7n + 1):after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        background-color: #b670f4;
+        width: 20px;
+      }
+
+      &.start.end:after {
+        display: none;
+      }
+    }
+  }
+}
