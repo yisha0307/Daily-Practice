@@ -1,0 +1,122 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:200);
+/* line 9, ../sass/ReactTab.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 12, ../sass/ReactTab.scss */
+body {
+  font-family: 'Exo',sans-serif;
+  font-size: 20px;
+  background-color: rgba(4, 191, 191, 0.3);
+  color: #CAFCD8;
+  letter-spacing: 1px;
+  min-height: 100%;
+}
+
+/* line 21, ../sass/ReactTab.scss */
+a, li {
+  list-style: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #CAFCD8;
+  background-color: #04BFBF;
+  border-top: 1px solid rgba(202, 252, 216, 0.5);
+  border-left: 1px solid rgba(202, 252, 216, 0.5);
+}
+/* line 29, ../sass/ReactTab.scss */
+a:last-of-type, li:last-of-type {
+  border-right: 1px solid rgba(202, 252, 216, 0.5);
+}
+/* line 32, ../sass/ReactTab.scss */
+a:hover, li:hover {
+  background: #CAFCD8;
+  color: #04BFBF;
+  box-shadow: -2px 0px 2px 0px rgba(0, 0, 0, 0.2);
+  transition: background-color .2s ease-in, color .2s ease-in;
+}
+
+/* line 40, ../sass/ReactTab.scss */
+#tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  margin: 30px auto 0;
+}
+/* line 47, ../sass/ReactTab.scss */
+#tabs-wrapper .tabcontent {
+  position: relative;
+  bottom: 30px;
+  left: 6px;
+}
+/* line 52, ../sass/ReactTab.scss */
+#tabs-wrapper .tabsC {
+  display: none;
+  border: 1px solid rgba(202, 252, 216, 0.5);
+  position: absolute;
+  top: 20px;
+  width: 263px;
+}
+/* line 59, ../sass/ReactTab.scss */
+#tabs-wrapper .tabsC-selected {
+  display: block;
+  text-align: center;
+  position: absolute;
+  height: 90px;
+  line-height: 90px;
+  background-color: #04BFBF;
+}
+/* line 66, ../sass/ReactTab.scss */
+#tabs-wrapper .tabsC-selected a {
+  text-transform: none;
+  border: none;
+}
+/* line 70, ../sass/ReactTab.scss */
+#tabs-wrapper .tabsC-selected a:hover {
+  background-color: #04BFBF;
+  color: #F7E967;
+  box-shadow: none;
+}
+/* line 77, ../sass/ReactTab.scss */
+#tabs-wrapper .tabs-selected {
+  text-decoration: none;
+  color: #04BFBF;
+  background-color: #CAFCD8;
+  border-color: rgba(202, 252, 216, 0.5);
+  border-bottom: 5px solid #F7E967;
+  box-shadow: -2px 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+/* line 85, ../sass/ReactTab.scss */
+#tabs-wrapper .switcher {
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  width: 275px;
+}
+/* line 90, ../sass/ReactTab.scss */
+#tabs-wrapper .switcher .tabs {
+  line-height: 45px;
+  flex: 1;
+  border-radius: 10px 10px 0 0;
+}
+/* line 94, ../sass/ReactTab.scss */
+#tabs-wrapper .switcher .tabs:first-child {
+  flex: 4;
+}
+/* line 99, ../sass/ReactTab.scss */
+#tabs-wrapper ul {
+  display: flex;
+  padding: 0;
+  margin: 20px auto;
+  list-style: none;
+  text-align: center;
+  max-width: 200px;
+}
+/* line 106, ../sass/ReactTab.scss */
+#tabs-wrapper ul li {
+  flex: 1;
+  line-height: 45px;
+  border-bottom: 1px solid rgba(202, 252, 216, 0.5);
+  cursor: pointer;
+}
