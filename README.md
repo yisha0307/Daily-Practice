@@ -8,6 +8,8 @@ Clock:  https://yisha0307.github.io/Daily-Practice/Canvas/clock.html
 
 Referral form: https://yisha0307.github.io/Daily-Practice/React/Referral-form/Referral.html    
 
-Date-picker: https://yisha0307.github.io/Daily-Practice/React/date-picker/date-picker.html 
+Date-picker: https://yisha0307.github.io/Daily-Practice/React/date-picker/date-picker.html   
+
+React-tabs: https://yisha0307.github.io/Daily-Practice/React/React-tabs/React-tab.html   
 
 
