@@ -10,6 +10,8 @@ Referral form: https://yisha0307.github.io/Daily-Practice/React/Referral-form/Re
 
 Date-picker: https://yisha0307.github.io/Daily-Practice/React/date-picker/date-picker.html   
 
-React-tabs: https://yisha0307.github.io/Daily-Practice/React/React-tabs/React-tab.html   
+React-tabs: https://yisha0307.github.io/Daily-Practice/React/React-tabs/React-tab.html     
+
+Loading1:https://yisha0307.github.io/Daily-Practice/CSS3/loading1.html
 
 
