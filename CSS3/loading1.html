@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date-picker</title>
+  <style>
+  html{
+  min-height:100%;
+  background-color:#333;
+}
+
+.circle{
+  margin:100px auto;
+  height:0;
+  width:0;
+  border-left:100px solid #ed1164;
+  border-right:100px solid #faa61a;
+  border-bottom:100px solid #f47920;
+  border-top:100px solid #2dbdb6;
+  animation:round 2s infinite linear;
+}
+
+@keyframes round{
+  70%{border-radius:100%;}
+  100%{transform:rotate(2turn)}
+}
+
+p{
+  color:#fff;
+  font-size:1.1rem;
+  text-align:center;
+  margin-top:-30px;
+}
+</style>
+</head>
+<body>
+	<div class='circle'></div>
+  <p>Created by E-sha.</p>
+</body>
+</html>
