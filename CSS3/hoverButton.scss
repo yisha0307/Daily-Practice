@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+$bg-color:rgb(random(150),random(150),random(150));
+
+body{
+  background-color:$bg-color;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+  font-family:'Source Sans Pro',sans-serif;
+  font-size:17pt;
+  text-transform:uppercase;
+}
+figure{
+  width:200px;
+  height:60px;  
+  perspective:500px;
+  cursor:pointer;
+  div{
+    height:100%;
+    transform-style:preserve-3d;
+    transition:0.25s ease-in;
+  }
+}
+figure:hover div{
+  transform:rotateX(-90deg);
+}
+span{
+  border:5px solid #fff;
+  width:100%;
+  height:100%;
+  position:absolute;
+  box-sizing:border-box;
+  line-height:50px;
+  text-align:center;
+}
+span:nth-child(1){
+  transform:translate3d(0,0,30px);
+}
+span:nth-child(2){
+  color:$bg-color;
+  background-color:#fff;
+  transform:rotateX(90deg) translate3d(0,0,30px);
+}
+  
