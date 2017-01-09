@@ -1,7 +1,7 @@
 # Daily-Practice
 主要放平时一些小练习。
 
-###  Canvas:
+
 Solar System: https://yisha0307.github.io/Daily-Practice/Canvas/Solar-system.html          
      
 Clock:  https://yisha0307.github.io/Daily-Practice/Canvas/clock.html      
@@ -14,6 +14,6 @@ React-tabs: https://yisha0307.github.io/Daily-Practice/React/React-tabs/React-ta
 
 Loading1:https://yisha0307.github.io/Daily-Practice/CSS3/loading1.html  
 
-Hover Button:https://yisha0307.github.io/Daily-Practice/CSS3/hoverButton.html
-
-
+Hover Button:https://yisha0307.github.io/Daily-Practice/CSS3/hoverButton.html    
+    
+Flashing-text:https://yisha0307.github.io/Daily-Practice/CSS3/flashing-text.html
