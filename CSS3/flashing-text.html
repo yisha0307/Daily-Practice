@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flashing-text</title>
+  <style>
+  *{
+  background-color: #111;
+  text-align:center;
+}
+
+p{
+  margin-top:100px;
+  font-family:courier;
+  font-weight:bold;
+  color:#fff;
+  text-shadow: 0 0 15px #fff;
+  font-size: 3em;
+  animation:loading 5s ease-out infinite;
+}
+.red{
+  color:#FF5E5E;
+  text-shadow: 0 0 15px #FF5E5E;
+}
+.green{
+  color: #00B16A;
+  text-shadow: 0 0 15px #00B16A;
+}
+.yellow{
+  color: #F9BF3B;
+	text-shadow: 0 0 15px #F9BF3B;
+}
+.blue{
+  color: #446CB3;
+	text-shadow: 0 0 15px #446CB3;
+}
+
+@keyframes loading{
+  0%{
+    opacity:0.2;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0.2;
+  }
+}
+</style>
+</head>
+<body>
+<p class="red">I ♥ You</p>
+<p class="green">I ♣ Seals</p>
+<p class="yellow">I Swing My ♦ Sword</p>
+<p class="blue">I ♠ My Cat</p>
+</body>
+</html>
