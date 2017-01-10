@@ -1,0 +1,67 @@
+@import "compass";
+@import "compass/css3";
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+$gray:#eaeaea;
+$blue:#22a1c4;
+$white:#fff;
+
+*{
+	box-sizing:border-box;
+}
+
+html, body{
+	min-height: 100%;
+	background-color: $gray;
+	font-family:'Open Sans', sans-serif;
+	font-size:12px;
+}
+
+#tabs{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width: 300px;
+	background-color: $gray;
+	
+	box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.1);
+}
+
+.Tab-title{
+	position: absolute;
+	top:0;
+	left:0px;
+	.title-div{
+		background-color:$blue;
+		display: inline-block;
+		width:100px;
+		height:50px;
+		line-height: 50px;
+		text-align: center;
+		font-size:14px;
+		text-transform: uppercase;
+		color:$white;
+		font-weight: 200;
+		cursor:pointer;
+	}
+	.title-selected{
+		
+		background-color: $white;
+		color:black;
+		padding-top:20px 0 20px;
+		border-top:5px solid $blue;
+		text-transform: none;
+	}
+}
+
+.content{
+	position: relative;
+	top: 50px;
+	display: none;
+	padding:20px 30px 50px 30px;
+	background-color:$white;
+}
+.content-visible{
+	display: block;
+}

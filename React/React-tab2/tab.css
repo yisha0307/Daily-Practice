@@ -1,0 +1,67 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
+/* line 9, ../sass/tab.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 13, ../sass/tab.scss */
+html, body {
+  min-height: 100%;
+  background-color: #eaeaea;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+/* line 20, ../sass/tab.scss */
+#tabs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #eaeaea;
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* line 31, ../sass/tab.scss */
+.Tab-title {
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+/* line 35, ../sass/tab.scss */
+.Tab-title .title-div {
+  background-color: #22a1c4;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 200;
+  cursor: pointer;
+}
+/* line 48, ../sass/tab.scss */
+.Tab-title .title-selected {
+  background-color: #fff;
+  color: black;
+  padding-top: 20px 0 20px;
+  border-top: 5px solid #22a1c4;
+  text-transform: none;
+}
+
+/* line 58, ../sass/tab.scss */
+.content {
+  position: relative;
+  top: 50px;
+  display: none;
+  padding: 20px 30px 50px 30px;
+  background-color: #fff;
+}
+
+/* line 65, ../sass/tab.scss */
+.content-visible {
+  display: block;
+}
