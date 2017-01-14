@@ -19,3 +19,5 @@ Loading1:https://yisha0307.github.io/Daily-Practice/CSS3/loading1.html
 Hover Button:https://yisha0307.github.io/Daily-Practice/CSS3/hoverButton.html    
     
 Flashing-text:https://yisha0307.github.io/Daily-Practice/CSS3/flashing-text.html
+
+React-mailbox: https://yisha0307.github.io/Daily-Practice/React/ReactInbox/reactInbox.html  
