@@ -1,0 +1,189 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+/* line 12, ../sass/reactInbox.scss */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 18, ../sass/reactInbox.scss */
+body {
+  background-color: #eeeeee;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+/* line 23, ../sass/reactInbox.scss */
+#inbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 580px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(51, 51, 51, 0.2);
+}
+
+/* line 34, ../sass/reactInbox.scss */
+.sidebar {
+  width: 15vw;
+}
+/* line 36, ../sass/reactInbox.scss */
+.sidebar .sidebar_compose {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  background-color: #0298bf;
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+}
+/* line 45, ../sass/reactInbox.scss */
+.sidebar .sidebar_compose i {
+  margin-left: 8px;
+}
+/* line 49, ../sass/reactInbox.scss */
+.sidebar ul {
+  list-style: none;
+  background-color: #34393d;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  height: 500px;
+  margin-top: 0px;
+  overflow: hidden;
+  padding-top: 20px;
+}
+/* line 59, ../sass/reactInbox.scss */
+.sidebar ul li {
+  padding: 25px 50px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.5s;
+}
+/* line 64, ../sass/reactInbox.scss */
+.sidebar ul li:hover {
+  text-shadow: 0 0 5px #fff;
+}
+/* line 67, ../sass/reactInbox.scss */
+.sidebar ul li span {
+  padding: 0 5px;
+  text-align: right;
+  float: right;
+}
+
+/* line 76, ../sass/reactInbox.scss */
+.emaillist {
+  position: absolute;
+  left: 15vw;
+  top: 0;
+  overflow-y: scroll;
+  font-weight: 200;
+  font-size: 14px;
+  background: #fff;
+  height: 580px;
+  width: 25vw;
+  border-right: 1px solid #eeeeee;
+}
+/* line 87, ../sass/reactInbox.scss */
+.emaillist p {
+  font-size: 12px;
+}
+/* line 90, ../sass/reactInbox.scss */
+.emaillist span {
+  text-align: right;
+  float: right;
+}
+
+/* line 96, ../sass/reactInbox.scss */
+.emaillist.empty {
+  background: white;
+  color: #878787;
+  font-size: 16px;
+  line-height: 580px;
+  text-align: center;
+}
+
+/* line 104, ../sass/reactInbox.scss */
+.emailDetail {
+  width: 40vw;
+  position: absolute;
+  left: 40vw;
+  top: 0;
+  font-size: 14px;
+}
+/* line 110, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__header {
+  padding: 20px 0 10px 20px;
+  width: 40vw;
+  background: #eeeeee;
+}
+/* line 114, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__header h4 {
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: 200;
+}
+/* line 119, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__header i {
+  float: right;
+  font-size: 20px;
+  margin-top: -30px;
+  margin-right: 50px;
+}
+/* line 125, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__header p {
+  color: #878787;
+}
+/* line 128, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__header span {
+  float: right;
+  margin-top: -15px;
+  margin-right: 30px;
+  color: #878787;
+}
+/* line 135, ../sass/reactInbox.scss */
+.emailDetail .emailDetail__content {
+  padding: 30px 20px;
+  line-height: 25px;
+}
+
+/* line 141, ../sass/reactInbox.scss */
+.footer {
+  position: absolute;
+  top: 90vh;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin-top: 10px;
+  color: #878787;
+}
+
+/* line 150, ../sass/reactInbox.scss */
+.email_item {
+  width: 25vw;
+  border-bottom: 1px solid #eeeeee;
+  padding: 20px;
+}
+/* line 154, ../sass/reactInbox.scss */
+.email_item h4 {
+  padding-bottom: 15px;
+}
+/* line 157, ../sass/reactInbox.scss */
+.email_item .unread {
+  position: relative;
+  top: -25px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #34393d;
+}
+
+/* line 166, ../sass/reactInbox.scss */
+.selected_item {
+  color: #0298bf;
+}
+/* line 168, ../sass/reactInbox.scss */
+.selected_item .unread {
+  background: #0298bf;
+}

@@ -5,150 +5,134 @@ class App extends React.Component{
 		let id=0;
 		for(const email of emails){
 			email.id = id++;
-		}
-		this.state = {
-			selectedEmailId: 0,
-			currentSection:'inbox',
-			emails //把emails从props变成states
+		};
+		this.state={
+			emails,
+			selectedEmail: 0,
+			currentSection:'inbox'
 		};
 	}
 	openEmail(id){
 		const emails = this.state.emails;
-		const index = emails.findIndex( x=> x.id===id);
+		const index = emails.findIndex(x => x.id === id);
 		emails[index].read = 'true';
 		this.setState({
-			selectedEmailId: id,
+			selectedEmail: id,
 			emails
-		});
+		})
 	}
 	deleteEmail(id){
 		const emails = this.state.emails;
-		const index = emails.findIndex( x => x.id===id);
-		emails[index].tag = 'deleted';
-		let selectedEmailId ='';
-		for(const email of emails){
-			if(email.tag === this.state.currentSection){
-				selectedEmailId = email.id;
-				break; //delete email之后选的是后面那封邮件
-			}
-		}
+		const index = emails.findIndex(x=>x.id === id);
+		emails[index].tag='deleted';
+		selectedEmail = emails.find( x=> x.tag===emails[id].tag && x.id > id);
 		this.setState({
-			selectedEmailId: selectedEmailId,
+			selectedEmail: selectedEmail,
 			emails
-		});
+		})
 	}
 	setSidebarSection(section){
-		//这个function是换section
-		let {selectedEmailId} = this.state;
+		let {selectedEmail} = this.state;
 		if(section !== this.state.currentSection){
-			selectedEmailId = '';
+			selectedEmail = '';
 		}
 		this.setState({
 			currentSection: section,
-			selectedEmailId
-		});
+			selectedEmail
+		})
 	}
 	render(){
-		const currentEmail = this.state.emails.find(x => x.id === this.state.selectedEmailId); //找出现在选择的那个email
-		return (
+		let {selectedEmail,currentSection} = this.state;
+		return(
 			<div>
-				<Sidebar emails = {this.props.emails} setSidebarSection={(section) => this.setSidebarSection(section)} />
-					<div className = 'inbox-container'>
-						<EmailList emails={this.state.emails.filter(x => x.tag === this.state.currentSection)} onEmailSelected = {(id)=>this.openEmail(id)} selectedEmailId = {this.state.selectedEmailId} currentSection = {this.state.currentSection} />
-						<EmailDetails email = {currentEmail} onDelete = {(id)=>this.deleteEmail(id)} />
-					</div>
-				</div>)
+			<Sidebar emails={this.props.emails} currentSection={currentSection} selectedEmail={selectedEmail} setSidebarSection={(section)=>this.setSidebarSection(section)} />
+			<EmailList emails = {this.state.emails.filter(x=>x.tag === currentSection)} currentSection={currentSection} selectedEmail={selectedEmail} openEmail = {(id)=>this.openEmail(id)} />
+			<EmailDetail email={this.props.emails[selectedEmail]} deleteEmail={(id)=>this.deleteEmail(id)} />
+			</div>
+			);
 	}
 }
 
-const Sidebar = ({emails,setSidebarSection}) => {
-	const unreadCount = emails.filter(x => x.tag ==='inbox' && x.read !=='true').length;
+const Sidebar = ({emails, currentSection, selectedEmail, setSidebarSection}) => {
+	const unreadCount = emails.filter(x=>x.tag === 'inbox' && x.read==='false').length;
 	const deletedCount = emails.filter(x => x.tag === 'deleted').length;
 	return (
-		<div id='sidebar'>
-			<div className = 'sidebar_compose'>
-				<a href='#' className='btn compose'>Compose
-					<i className='fa fa-pencil-square-o'></i>
-				</a>
+		<div className = 'sidebar'>
+			<div className='sidebar_compose'>Compose
+			<i className='fa fa-pencil-square-o'></i>
 			</div>
-			<ul className = 'sidebar_inboxes'>
-				<li onClick = {()=>setSidebarSection('inbox')}><a>Inbox<span>{unreadCount}</span></a></li>
-				<li onClick = {()=>setSidebarSection('sent')}><a>Sent<span>0</span></a></li>
-				<li onClick = {()=>setSidebarSection('drafts')}><a>Drafts<span>0</span></a></li>
-				<li onClick = {()=>setSidebarSection('deleted')}><a>Trash<span>{deletedCount}</span></a></li>
+			<ul className ='sidebar_sections'>
+				<li key='inbox' onClick = {()=>setSidebarSection('inbox')}>Inbox
+					<span>{unreadCount}</span></li>
+				<li key='sent' onClick = {()=>setSidebarSection('sent')}>Sent
+					<span>0</span></li>
+				<li key='drafts' onClick={()=>setSidebarSection('drafts')}>Drafts 
+					<span>0</span></li>
+				<li key='trash' onClick={()=>setSidebarSection('deleted')}>Trash
+					<span>{deletedCount}</span></li>
 			</ul>
 		</div>
-				);
+			);
 }
 
-const EmailList =({emails, onEmailSelected, currentSection, selectedEmailId}) =>{
+const EmailList = ({emails,currentSection,selectedEmail,openEmail}) => {
 	if(emails.length === 0){
-		return <div className='email-list empty'> Nothing to see here, great job! </div>;
-	}else{
-		return (
-			<div className='emails-list'>
-			{emails.map((email) => {
-				return (
-					<EmailListItem onEmailClicked ={(id)=>onEmailSelected(id)} email = {email} selected = {selectedEmailId === email.id} />);
-			})}
-			</div>);
-	};
-}
-
-const EmailListItem = ({onEmailClicked, email, selected}) => {
-	let classes = 'email-item';
-	if(selected){
-		classes += ' selected';
+		return <div className='emaillist empty'>Nothing to see here, great job!</div>;
 	}
 	return (
-		<div onClick = {()=>onEmailClicked(email.id)} className={classes}>
-			<div className = 'email-item__unread-dot' data-read = {email.read}></div>
-			<div className = 'email-item__subject truncate'>{email.subject}</div>
-			<div className = 'email-item__details'>
-				<span className='email-item__form truncate'>{email.from}</span>
-				<span className = 'email-item__time truncate'>{getPrettyDate(email.time)}</span>
-			</div>
+		<div className='emaillist list'>
+		{emails.map((email,index)=><EmailItem key={index} openEmail={(id)=>openEmail(id)} email={email} selectedEmail={email.id === selectedEmail} />)}
+		</div>
+		);
+}
+
+const EmailItem = ({openEmail,email,selectedEmail}) =>{
+	let classes='email_item';
+	if(selectedEmail){
+		classes += ' selected_item';
+	}
+	return(
+		<div className={classes} onClick={()=>openEmail(email.id)}>
+		<h4>{email.subject}</h4>
+		<span className={email.read==='true'?'':'unread'}></span>
+		<p>{email.from}
+		<span>{getPrettyDate(email.time)}</span></p>
 		</div>);
 }
 
-const EmailDetails = ({email, onDelete}) => {
+const EmailDetail = ({email,deleteEmail}) =>{
 	if(!email){
 		return (
-			<div className ='email-content empty'></div>);
+			<div className='emailDetail empty'></div>)
+	}else{
+		return(
+			<div className = 'emailDetail detail'>
+				<div className='emailDetail__header'>
+				<h4>{email.subject}</h4>
+				<i className='fa fa-trash' onClick={()=>deleteEmail(email.id)}></i>
+				<p>{email.from}</p>
+				<span>{getPrettyDate(email.time)}{'  '}
+				{getprettyTime(email.time)}</span>
+				</div>
+				<div className='emailDetail__content'>
+				<p>{email.message}</p>
+				</div>
+			</div>);
 	}
-	const date = `${getPrettyDate(email.time)} ${getPrettyTime(email.time)}`;
-	const getDeleteButton =()=>{
-		if(email.tag !=='deleted'){
-			return <span onClick ={()=> onDelete(email.id)}><i className = 'delete-btn fa fa-trash-o'></i></span>;
-		}else{
-			return false;
-		}
-	}
-	return (
-		<div className='email-content'>
-			<div className = 'email-content__header'>
-				<h3 className='email-content__subject'>{email.subject}</h3>
-				{getDeleteButton()}
-				<div className='email-content__time'>{date}</div>
-				<div className ='email-content__from'>{email.from}</div>
-			</div>
-			<div className = 'email-content__message'>
-			{email.message}</div>
-		</div>
-		);
-};
+}
 
-//ajax 部分
+//render
 $.ajax({
 	url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/311743/dummy-emails.json',
-	type:'GET',
+	type: 'GET',
 	success: function(result){
-		ReactDOM.render(<App emails = {result}/>, document.querySelector('#inbox'));
+		ReactDOM.render(<App emails={result} />,document.querySelector('#inbox'));
 	},
 	error: function(){
-		console.log('Something went wrong...');
+		alert('Something went wrong...');
 	}
-});
 
-const getPrettyDate = (date) =>{return date.split(' ')[0];}
-const getPrettyTime = (date)=>{return date.split(' ')[1];}
+})
+
+const getPrettyDate = (time)=>{return (time.split(' ')[0])};
+const getprettyTime = (time) =>{return (time.split(' ')[1])};
