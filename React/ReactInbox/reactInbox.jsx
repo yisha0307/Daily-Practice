@@ -123,7 +123,7 @@ const EmailDetail = ({email,deleteEmail}) =>{
 
 //render
 $.ajax({
-	url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/311743/dummy-emails.json',
+	url: 'inbox.json',
 	type: 'GET',
 	success: function(result){
 		ReactDOM.render(<App emails={result} />,document.querySelector('#inbox'));
