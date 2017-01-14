@@ -1,5 +1,5 @@
 [
-{
+- {
 from: "Maxime Preaux",
 address: "maxime@codepen.io",
 time: "2016-10-07 15:35:14",
@@ -8,7 +8,7 @@ subject: "Messing with React.js",
 tag: "inbox",
 read: "false"
 },
-{
+- {
 from: "Dribbble",
 address: "digest@dribbble.com",
 time: "2016-05-09 14:23:54",
@@ -17,7 +17,7 @@ subject: "Dribbble Digest",
 tag: "inbox",
 read: "false"
 },
-{
+- {
 from: "Christopher Medina",
 address: "dolor@luctusutpellentesque.net",
 time: "2015-07-03 21:48:27",
@@ -26,7 +26,7 @@ subject: "Broken PR?",
 tag: "inbox",
 read: "false"
 },
-{
+- {
 from: "Wylie Roberson",
 address: "mi@utnisi.edu",
 time: "2016-01-08 18:39:34",
@@ -35,7 +35,7 @@ subject: "Learn latin in 10 days!",
 tag: "deleted",
 read: "true"
 },
-{
+- {
 from: "Slack HQ",
 address: "fishbowl@slack.com",
 time: "2015-07-21 09:47:57",
@@ -44,7 +44,7 @@ subject: "Join the Fishbowl Team",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Ray Lamb",
 address: "ut.erat.Sed@volutpatNulla.co.uk",
 time: "2016-01-08 10:14:40",
@@ -53,7 +53,7 @@ subject: "Concert tickets on sale",
 tag: "inbox",
 read: "false"
 },
-{
+- {
 from: "StackOverflow",
 address: "non@semmolestie.com",
 time: "2016-06-29 15:39:06",
@@ -71,7 +71,7 @@ subject: "Pastebin PRO",
 tag: "deleted",
 read: "true"
 },
-{
+- {
 from: "TurboTax Online",
 address: "quam.a.felis@montesnasceturridiculus.co.uk",
 time: "2016-08-01 19:51:23",
@@ -80,7 +80,7 @@ subject: "Your refund is waiting",
 tag: "deleted",
 read: "true"
 },
-{
+- {
 from: "Codepen Info",
 address: "pharetra.Nam@lacus.com",
 time: "2016-07-05 18:20:04",
@@ -89,7 +89,7 @@ subject: "Your pen reached 1,000 views!",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Lithium Hosting",
 address: "magna@nequepellentesquemassa.edu",
 time: "2016-03-16 13:49:17",
@@ -98,7 +98,7 @@ subject: "LH - Renewal",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "American Airlines",
 address: "magna.Ut@nibhPhasellus.co.uk",
 time: "2016-02-17 21:00:15",
@@ -107,7 +107,7 @@ subject: "Trip to Seattle",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Carol Bender",
 address: "tristique.neque.venenatis@at.edu",
 time: "2015-03-17 08:13:14",
@@ -116,7 +116,7 @@ subject: "401k Paperwork",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Steam Support",
 address: "sapien.gravida.non@pharetraut.com",
 time: "2016-02-23 19:02:54",
@@ -125,7 +125,7 @@ subject: "An item from your wishlist is on sale",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "DekDev",
 address: "non.ante.bibendum@Morbimetus.com",
 time: "2016-04-10 15:06:31",
@@ -134,7 +134,7 @@ subject: "Path to the Sky",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Fitbit",
 address: "sit.amet@vitaerisus.org",
 time: "2015-08-30 14:00:12",
@@ -143,7 +143,7 @@ subject: "You took a few steps!",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Emery Forbes",
 address: "elit.Etiam.laoreet@Nullatemporaugue.co.uk",
 time: "2015-09-22 06:16:59",
@@ -152,7 +152,7 @@ subject: "New repo",
 tag: "inbox",
 read: "true"
 },
-{
+- {
 from: "Amazon Pantry",
 address: "massa.Integer.vitae@turpis.org",
 time: "2015-12-19 06:35:19",
