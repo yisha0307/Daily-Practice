@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover-effect</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	* {
+  margin: 0;
+  padding: 0;
+}
+
+#wrap1 {
+  position: relative;
+  margin: 30px;
+  width: 40px;
+  height: 40px;
+  border: -3px solid #fb3454;
+  overflow: hidden;
+}
+
+.calendar {
+  width: inherit;
+  height: inherit;
+  background-color: #fb3454;
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  transition: transform .5s ease;
+}
+
+.fa-calendar {
+  font-size: 23px;
+}
+
+.calendar__bottom i {
+  background-color: #fff;
+  width: 34px;
+  height: 34px;
+  line-height: 30px;
+}
+
+.calendar__bottom {
+  position: absolute;
+  top: 40px;
+  width: inherit;
+  height: inherit;
+  background-color: #fb3454;
+  z-index: 1;
+  color: #fb3454;
+  line-height: 40px;
+  text-align: center;
+  transition: transform 0.5s ease;
+}
+.calendar__bottom:hover {
+  transform: translateY(-100%);
+}
+.calendar__bottom:before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: -100%;
+}
+.calendar__bottom:hover ~ .calendar {
+  transform: translateY(-100%);
+}
+
+	</style>
+</head>
+<body>
+	<div id='wrap1'>
+  <div class='calendar__bottom'><i class='fa fa-calendar'></i></div>
+
+<div class='calendar'><i class="fa fa-calendar" aria-hidden="true"></i></div>
+  </div>
+</body>
+</html>
