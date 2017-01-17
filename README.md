@@ -24,4 +24,4 @@ React-mailbox: https://yisha0307.github.io/Daily-Practice/React/ReactInbox/react
 
 Hover:https://yisha0307.github.io/Daily-Practice/CSS3/css-hover.html
 
-KUMANON-hover:https://yisha0307.github.io/Daily-Practice/CSS3/kumanon-hover.html
+KUMANON-hover:https://yisha0307.github.io/Daily-Practice/CSS3/kumamon-hover.html
