@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animate-Hover</title>
+	<style>
+	html, body {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+#boxes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 360px;
+  overflow: hidden;
+}
+
+img {
+  width: inherit;
+  height: inherit;
+}
+
+#overlay {
+  position: absolute;
+  top: 0%;
+  left: -100%;
+  background-color: #ffd124;
+  color: #fff;
+  font-size: 40px;
+  width: inherit;
+  height: inherit;
+  line-height: 360px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div id='boxes'>
+  <img src='http://blogimg.goo.ne.jp/user_image/1f/d2/ce3cb729ad65c1e11442095aad1326e3.jpg' />
+  <div id='overlay'>KUMAMON ♥</div>
+</div>
+
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script>
+function toEdgeDist(x,y,x2,y2){
+  const xDiff = x-x2;
+  const yDiff = y-y2;
+  return (xDiff**2 + yDiff**2);
+}
+
+//calculate the closest middle point
+const closestDist = function(x,y,w,h){
+  const toTop = toEdgeDist(x,y,w/2,0);
+  const toBottom = toEdgeDist(x,y,w/2,h);
+  const toLeft = toEdgeDist(x,y,0,h/2);
+  const toRight = toEdgeDist(x,y,w,h/2);
+  const minDist = Math.min(toTop,toBottom,toLeft,toRight);
+  console.log(toTop,toBottom,toLeft,toRight);
+  switch(minDist){
+    case toTop:
+      return 'top';
+    case toBottom:
+      return 'bottom';
+    case toLeft:
+      return 'left';
+    case toRight:
+      return 'right';
+                }
+}
+
+$(document).ready(function(){
+  $('#boxes').mouseenter(function(e){
+    const x = e.pageX - (this.offsetLeft-this.clientWidth *.5);
+    const y = e.pageY - (this.offsetTop-this.clientHeight * .5);
+    const w = this.clientWidth;
+    const h = this.clientHeight;
+    const enterResult = closestDist(x,y,w,h);
+  
+    switch(enterResult){
+      case 'top':
+        $('#overlay').css({'top':'-100%','left':'0%'});
+        $('#overlay').animate({top:'0%'},300);
+        break;
+      case 'bottom':
+        $('#overlay').css({'top':'100%','left':'0%'});
+        $('#overlay').animate({top:'0%'},300);
+        break;
+      case 'left':
+        $('#overlay').css({'left':'-100%','top':'0%'});
+        $('#overlay').animate({left:'0%'},300);
+        break;
+      case 'right':
+        $('#overlay').css({'left':'100%','top':'0%'});
+        $("#overlay").animate({left:'0%'},300);
+        break;
+                      }  
+  });
+  $('#boxes').mouseleave(function(e){
+    $('#overlay').css({'top':'0%','left':'0%'}); 
+    const x = e.pageX - (this.offsetLeft-this.clientWidth *.5);
+    const y = e.pageY - (this.offsetTop-this.clientHeight * .5);
+    const w = this.clientWidth;
+    const h = this.clientHeight;
+    const exitResult = closestDist(x,y,w,h);
+    switch (exitResult){
+      case 'top':
+        $('#overlay').animate({'top':'-100%'},300);
+        break;
+      case 'left':
+        $('#overlay').animate({'left':'-100%'},300);
+        break;
+      case 'right':
+        $('#overlay').animate({'left':'100%'},300);
+        break;
+      case 'bottom':
+        $('#overlay').animate({'top':'100%'},300);
+        break;
+                      }
+  })
+})
+</script>
+</body>
+</html>
