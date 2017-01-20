@@ -17,7 +17,7 @@ class App extends React.Component{
 			data
 			// focus:true
 		});
-		this.refs.myTodo.value ='';
+		this.myTodo.value ='';
 	}
 	//按每一条列表中的li从undo变成done,或者从done变成undo
 	changeStatus(datum){
