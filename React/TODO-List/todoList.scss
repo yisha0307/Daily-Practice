@@ -1,0 +1,109 @@
+@import "compass";
+@import "compass/css3";
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+$red:#fd756c;
+$orange:#ff8f68;
+$gray:#e8ebed;
+$green:#47cf73;
+$blue:#0ebeff;
+
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+
+html,body{
+	min-height:100%;
+	min-width:100%;
+}
+
+body{
+	background: linear-gradient(45deg,$red,$orange);
+	font-family: 'Inconsolata', monospace;
+}
+
+#app{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width: 450px;
+	height: auto;
+	background: #fff;
+	padding: 20px;
+	border-radius:5px;
+	box-shadow: 0 0 15px #eee;
+
+	h3{
+		text-align: center;
+		font-size:35px;
+		margin: 10px 0 30px;
+	}
+
+	#textInput{
+		background-color: $gray;
+		border-style: none;
+		width:250px;
+		height:30px;
+		margin: 0 50px;
+		border-radius:4px;
+		outline: 0;
+		font-size:20px;
+	}
+	.submitBtn_display{
+		display: inline-block;
+		font-size:30px;
+		border-style: none;
+		width:55px;
+		height:55px;
+		border-radius:50%;
+		color:#fff;
+		background-color:$green;
+		margin-left:-50px;
+		outline: 0;
+	}
+	.display{
+		min-height:360px;
+		li{
+			list-style: none;
+			margin-left:50px;
+			padding: 10px 0;
+			font-size:20px;
+			.fa-check{
+				position: absolute;
+				left:100%;
+				transform:translateX(-300%);
+				color:$green;
+			}
+		}
+	}
+
+}
+
+.btnclass{ 
+	margin-left:70px;
+	button{
+	font-size:40px;
+	border-style: none;
+	outline: 0;
+	background-color: #fff;
+	margin:25px;
+}
+	#lists{
+		color:$blue;
+	}
+	#delete{
+		color:$red;
+	}
+	#checked{
+		color:$green;
+	}
+}
+
+.submitBtn_hide{
+	display: none;
+}
+
+
