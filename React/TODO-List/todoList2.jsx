@@ -9,7 +9,8 @@ class App extends React.Component{
 	}
 	//按submit提交input，同时将该条信息push进data队列
 	addClick(){
-		const newContent = this.refs.myTodo.value;
+		const newContent = this.myTodo.value;
+		//尽量避免用ref的string格式，写成callback		
 		const data=this.props.data;
 		data.push({content: newContent, status:'undo'});
 		this.setState({
@@ -67,7 +68,7 @@ class App extends React.Component{
 				<h3>Todos</h3>
 				<Display data={data} changeStatus = {(datum)=> this.changeStatus(datum)}/>
 				<div className = 'inputs' >
-					<input id='textInput' type='text' ref='myTodo'/>
+					<input id='textInput' type='text' ref={input => this.myTodo = input}/>
 					<button className='submitBtn_display' onClick = {()=>this.addClick()} ><i className="fa fa-plus" aria-hidden="true" /></button>
 				</div>
 				<BtnLists data = {data} choice={choice} showlists = {this.showlists.bind(this)} onDelete={this.onDelete.bind(this)} onCheck = {this.onCheck.bind(this)}/>
