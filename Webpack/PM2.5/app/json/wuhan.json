@@ -1,0 +1,111 @@
+[{
+	"aqi": 65,
+	"area": "武汉",
+	"pm2_5": 47,
+	"pm2_5_24h": 75,
+	"position_name": "东湖梨园",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1325A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 68,
+	"area": "武汉",
+	"pm2_5": 49,
+	"pm2_5_24h": 72,
+	"position_name": "汉阳月湖",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1326A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 70,
+	"area": "武汉",
+	"pm2_5": 51,
+	"pm2_5_24h": 76,
+	"position_name": "汉口花桥",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1327A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 69,
+	"area": "武汉",
+	"pm2_5": 50,
+	"pm2_5_24h": 74,
+	"position_name": "武昌紫阳",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1328A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 87,
+	"area": "武汉",
+	"pm2_5": 64,
+	"pm2_5_24h": 86,
+	"position_name": "青山钢花",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1329A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 65,
+	"area": "武汉",
+	"pm2_5": 47,
+	"pm2_5_24h": 78,
+	"position_name": "沌口新区",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1330A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 65,
+	"area": "武汉",
+	"pm2_5": 47,
+	"pm2_5_24h": 66,
+	"position_name": "汉口江滩",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1331A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 75,
+	"area": "武汉",
+	"pm2_5": 55,
+	"pm2_5_24h": 83,
+	"position_name": "东湖高新",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1332A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 67,
+	"area": "武汉",
+	"pm2_5": 48,
+	"pm2_5_24h": 72,
+	"position_name": "吴家山",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1333A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 65,
+	"area": "武汉",
+	"pm2_5": 47,
+	"pm2_5_24h": 122,
+	"position_name": "沉湖七壕",
+	"primary_pollutant": "细颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": "1334A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 70,
+	"area": "武汉",
+	"pm2_5": 50,
+	"pm2_5_24h": 80,
+	"position_name": null,
+	"primary_pollutant": "颗粒物(PM2.5)",
+	"quality": "良",
+	"station_code": null,
+	"time_point": "2017-02-07T14:00:00Z"
+}]
