@@ -1,0 +1,111 @@
+[{
+	"aqi": 32,
+	"area": "上海",
+	"pm2_5": 22,
+	"pm2_5_24h": 14,
+	"position_name": "十五厂",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1142A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 31,
+	"area": "上海",
+	"pm2_5": 14,
+	"pm2_5_24h": 13,
+	"position_name": "虹口",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1143A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 26,
+	"area": "上海",
+	"pm2_5": 13,
+	"pm2_5_24h": 15,
+	"position_name": "徐汇上师大",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1144A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 33,
+	"area": "上海",
+	"pm2_5": 16,
+	"pm2_5_24h": 15,
+	"position_name": "杨浦四漂",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1145A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 25,
+	"area": "上海",
+	"pm2_5": 11,
+	"pm2_5_24h": 13,
+	"position_name": "青浦淀山湖",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1146A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 31,
+	"area": "上海",
+	"pm2_5": 10,
+	"pm2_5_24h": 13,
+	"position_name": "静安监测站",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1147A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 33,
+	"area": "上海",
+	"pm2_5": 8,
+	"pm2_5_24h": 12,
+	"position_name": "浦东川沙",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1148A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 32,
+	"area": "上海",
+	"pm2_5": 7,
+	"pm2_5_24h": 14,
+	"position_name": "浦东新区监测站",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1149A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 30,
+	"area": "上海",
+	"pm2_5": 11,
+	"pm2_5_24h": 16,
+	"position_name": "浦东张江",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1150A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 29,
+	"area": "上海",
+	"pm2_5": 3,
+	"pm2_5_24h": 11,
+	"position_name": "普陀",
+	"primary_pollutant": null,
+	"quality": "优",
+	"station_code": "1141A",
+	"time_point": "2017-02-07T14:00:00Z"
+}, {
+	"aqi": 38,
+	"area": "上海",
+	"pm2_5": 11,
+	"pm2_5_24h": 13,
+	"position_name": null,
+	"primary_pollutant": "",
+	"quality": "优",
+	"station_code": null,
+	"time_point": "2017-02-07T14:00:00Z"
+}]
