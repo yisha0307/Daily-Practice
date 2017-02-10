@@ -32,3 +32,4 @@ webpack-Searchbar: https://yisha0307.github.io/Daily-Practice/Webpack/SearchBar/
 
 particles.js Test: https://yisha0307.github.io/Daily-Practice/particlesJS/particlesTEST.html   
 
+Slide-to-open: https://yisha0307.github.io/Daily-Practice/React/slide-to-open.html  
