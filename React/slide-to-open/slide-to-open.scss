@@ -1,0 +1,140 @@
+@import "compass";
+@import "compass/css3";
+
+$purple: #270027;
+$yellow: #e9bc0f;
+
+*{
+	box-sizing: border-box;
+}
+
+html,body{
+	min-height: 100%;
+	background-color: $purple;
+	color:#fff;
+}
+
+.slide__text{
+	position: fixed;
+	top:25%;
+	left:0;
+	right:0;
+	text-align:center;
+	>h1{
+		text-transform: uppercase;
+		font-size: 45px;
+	}
+	>h1:after,
+	>p:before{
+		display: inline-block;
+		content: '';
+		width:120px;
+		height:2px;
+		background: #616161; 
+		margin: 5px 20px;
+	}
+	>h1:after{
+		margin: 17px 20px;
+	}
+	>p{
+		>b{
+			color: $yellow;
+			font-weight:800;
+			font-size:20px;
+		}
+	}
+}
+
+.slide__button{
+	position: fixed;
+	top:60%;
+	right:0;
+	#bigcircle{
+		cursor: pointer;
+		width:89px;
+		height: 89px;
+		border-radius: 50%;
+		background-color: $purple;
+		border: #fff 2px solid;
+		z-index: 9;
+		#innercircle{
+		width:70px;
+		height: 70px;
+		border-radius: 50%;
+		background-color: #fff;
+		color: $purple;
+		text-align: center;
+		font-size:18px;
+		font-weight: 400;
+		line-height: 70px;
+		margin: 7px 0 0 7px;
+		transition: 0.1s ease-in;
+		&:hover{
+			width:88px;
+			height:88px;
+			margin:-2px 0 0 -2px;
+			line-height: 88px;		
+		}
+	}
+	}
+
+	#smallcircle{
+		position: fixed;
+		top:64.6%;
+		left:60%;
+		width:17px;
+		height:17px;
+		border-radius:50%;
+		background-color: $purple;
+		border:1px #fff solid;
+		color:#fff;
+		text-align: center;
+		line-height:9px;
+		z-index: 1;
+	}
+}
+
+.slide__blank{
+	position: fixed;
+	top:65%;
+	left:60%;
+	width:18px;
+	height:18px;
+	border-radius: 50%;
+	background-color: #fff;
+	animation: blank 0.2s ease-in forwards;
+}
+
+@keyframes blank{
+	100%{
+		top:-60%;
+		left:-30%;
+		width: 2200px;
+		height:2200px;
+	}
+}
+
+.dotline{
+	position: fixed;
+	right:40%;
+	top:64%;
+}
+
+.dotdot{
+	position: relative;
+	left:0;
+	width: 1px;
+	height: 1px;
+	border-radius: 50%;
+	background-color: #fff;
+	display: inline-block;
+	margin-left: 12px;
+	animation: toRight 0.5s linear infinite;
+}
+
+@keyframes toRight{
+	100%{
+		left:12px;
+	}
+}
+

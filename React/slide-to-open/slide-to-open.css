@@ -1,0 +1,144 @@
+/* line 7, ../sass/slide-to-open.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 11, ../sass/slide-to-open.scss */
+html, body {
+  min-height: 100%;
+  background-color: #270027;
+  color: #fff;
+}
+
+/* line 17, ../sass/slide-to-open.scss */
+.slide__text {
+  position: fixed;
+  top: 25%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+/* line 23, ../sass/slide-to-open.scss */
+.slide__text > h1 {
+  text-transform: uppercase;
+  font-size: 45px;
+}
+/* line 27, ../sass/slide-to-open.scss */
+.slide__text > h1:after,
+.slide__text > p:before {
+  display: inline-block;
+  content: '';
+  width: 120px;
+  height: 2px;
+  background: #616161;
+  margin: 5px 20px;
+}
+/* line 36, ../sass/slide-to-open.scss */
+.slide__text > h1:after {
+  margin: 17px 20px;
+}
+/* line 40, ../sass/slide-to-open.scss */
+.slide__text > p > b {
+  color: #e9bc0f;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* line 48, ../sass/slide-to-open.scss */
+.slide__button {
+  position: fixed;
+  top: 60%;
+  right: 0;
+}
+/* line 52, ../sass/slide-to-open.scss */
+.slide__button #bigcircle {
+  cursor: pointer;
+  width: 89px;
+  height: 89px;
+  border-radius: 50%;
+  background-color: #270027;
+  border: #fff 2px solid;
+  z-index: 9;
+}
+/* line 60, ../sass/slide-to-open.scss */
+.slide__button #bigcircle #innercircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #270027;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 70px;
+  margin: 7px 0 0 7px;
+  transition: 0.1s ease-in;
+}
+/* line 72, ../sass/slide-to-open.scss */
+.slide__button #bigcircle #innercircle:hover {
+  width: 88px;
+  height: 88px;
+  margin: -2px 0 0 -2px;
+  line-height: 88px;
+}
+/* line 81, ../sass/slide-to-open.scss */
+.slide__button #smallcircle {
+  position: fixed;
+  top: 64.6%;
+  left: 60%;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: #270027;
+  border: 1px #fff solid;
+  color: #fff;
+  text-align: center;
+  line-height: 9px;
+  z-index: 1;
+}
+
+/* line 97, ../sass/slide-to-open.scss */
+.slide__blank {
+  position: fixed;
+  top: 65%;
+  left: 60%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: blank 0.2s ease-in forwards;
+}
+
+@keyframes blank {
+  100% {
+    top: -60%;
+    left: -30%;
+    width: 2200px;
+    height: 2200px;
+  }
+}
+/* line 117, ../sass/slide-to-open.scss */
+.dotline {
+  position: fixed;
+  right: 40%;
+  top: 64%;
+}
+
+/* line 123, ../sass/slide-to-open.scss */
+.dotdot {
+  position: relative;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: inline-block;
+  margin-left: 12px;
+  animation: toRight 0.5s linear infinite;
+}
+
+@keyframes toRight {
+  100% {
+    left: 12px;
+  }
+}
