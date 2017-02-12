@@ -43,6 +43,7 @@ class SlideButton extends React.Component{
 			isDragging: false, //设置是不是在drag状态下
 			relativex:null,
 		};
+		this.onWindowResize = this.onWindowResize.bind(this);
 	}
 	handleMouseDown(e){
 		this.setState({
@@ -77,6 +78,15 @@ class SlideButton extends React.Component{
 				left: this.props.left
 			});
 		}
+	}
+	onWindowResize(){
+		this.setState({left: window.innerWidth * 0.32});
+	}
+	componentDidMount() {
+	    window.addEventListener('resize', this.onWindowResize)
+	}
+	componentWillUnmount() {
+	    window.removeEventListener('resize', this.onWindowResize)
 	}
 	render(){
 		const left = this.state.left;
