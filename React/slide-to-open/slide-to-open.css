@@ -111,8 +111,8 @@ html, body {
 
 @keyframes blank {
   100% {
-    top: -60%;
-    left: -30%;
+    top: -150%;
+    left: -80%;
     width: 4000px;
     height: 4000px;
   }
