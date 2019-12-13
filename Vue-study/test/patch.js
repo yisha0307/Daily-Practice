@@ -76,6 +76,66 @@ function updateChildren(parentElm, oldCh, newCh) {
             newStartVnode = newCh[++newStartIdx]
         } else {
             // 以上情况都不符合
+            // elmToMove = oldCh[idxInOld]
+            if (!oldKeyToIdx) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
+            idxInOld = newStartVnode.key ? oldKeyToIdx[newStartVnode.key] : null
+            if (!idxInOld) {
+                // 如果没有找到newStartVnode相同key的节点，就创造一个新节点
+                // startIdx向后移一位
+                createElm(newStartVnode, parentElm)
+                newStartVnode = newCh[++newStartIdx]
+            } else {
+                // 找到newStartVnode相同key的节点
+                elmToMove = oldCh[idxInOld]
+                if (sameVnode(elmToMove, newStartVnode)) {
+                    // 将这两个接口进行patch
+                    // 将该位置的老节点赋值成undefined
+                    // 将newSatrtVnode.elm插入到oldStartVnode.elm前面
+                    patchnode(elmToMove, newStartVnode)
+                    oldCh[idxInOld] = undefined
+                    nodeOps.insertBefore(parentElm, newStartVnode.elm, oldStartVnode.elm)
+                    newStartVnode = newCh[++newStartVnode]
+                } else {
+                    // 不是sameNode
+                    // 创建一个新节点插入到parentElm的子节点中
+                    // newStartVnod往后移一位
+                    createElm(newStartVnode, parentElm)
+                    newStartVnode = newCh[++newStartVnode]
+                }
+            }
         }
+    } if (oldStartIdx > oldEndIdx) {
+        // 老节点比完了
+        // 多出来的新节点加进去
+        refElm = (newCh[newEndIdx + 1]) ? newCh[newEndIdx + 1].elm : null;
+        addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx);
+    } else if (newStartIdx > newEndIdx) {
+        // 新节点比完了
+        // 多出来的老节点删掉
+        removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
     }
+}
+
+function createKeyToOldIdx (children, beginIdx, endIdx) {
+    // 产生一个key与index索引对应的一个map表
+    let i, key
+    const map = {}
+    for (i = beginIdx; i <= endIdx; ++i) {
+        key = children[i].key
+        if (isDef(key)) map[key] = i
+    }
+    return map
+}
+
+function sameVnode (){
+    // 满足sameVnode:
+    // key/tag/iscomment(是不是注释节点) / data同时定义或不定义 / input type一致
+    // 所以key很重要
+    return (
+        a.key === b.key &&
+        a.tag === b.tag && 
+        a.isComment === b.isComment &&
+        (!!a.data) === (!!b.data) &&
+        sameInputType(a,b)
+    )
 }
