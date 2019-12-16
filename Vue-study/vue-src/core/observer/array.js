@@ -26,6 +26,7 @@ export const arrayMethods = Object.create(arrayProto)
 .forEach(function (method) {
   // cache original method
   /*将数组的原生方法缓存起来，后面要调用*/
+  // original是原来数组的方法
   const original = arrayProto[method]
   def(arrayMethods, method, function mutator () {
     // avoid leaking arguments:
