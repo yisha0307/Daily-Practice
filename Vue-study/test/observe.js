@@ -30,7 +30,7 @@ export function  observe(value: any, asRooteData: ?boolean): Observer | void {
 // Dep是data每个对象包括子对象都有一个改对象，当所绑定的数据发生变化时，由dep通知watcher
 // compile是html指令解析器，对每个元素节点进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新数据
 // watcher是连接Dep和compile的桥梁
-export class {
+export class Observer{
     value: any;
     dep: Dep;
     vmCount: number;
