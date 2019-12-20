@@ -1,66 +1,87 @@
+// 为mvvm.js提供observe
 class Observer {
-    constructor(data) {
-        this.data = data
-        this.walk(data)
+    constructor (value) {
+        this.data = value
+        this.walk(value)
     }
-    walk (data) {
-        Object.keys(data).forEach(d => {
-            // 为每一个属性添加defineReactive, 即定义订阅者
-            this.defineReactive(data, d, data[d])
+    walk (value) {
+        var me = this
+        // 劫持value每一个属性的get和set
+        Object.keys(value).forEach(key => {
+            me.convert(key, data[key])
         })
     }
-    defineReactive(data, key, val) {
+    convert (key, value) {
+        this.defineReactive(this.data, key, value)
+    }
+    defineReactive (data, key, value) {
+        // 每一个属性一个dep
         var dep = new Dep()
-        var childObj = observe(val)
+        // 深层observe
+        var childObj = observe(value)
+        // get的时候收集依赖
+        // set的时候notify watcher进行更新
         Object.defineProperty(data, key, {
-            enumerable: true, // 可枚举
-            configurable: false, // 不能再define
-            get: function () {
-                
+            configurable: false,
+            enumerable: true,
+            get: () => {
+                //一个全局的Dep.target，用完就null掉
+              if (Dep.target) {
+                  // depend用于新增订阅者watcher
+                  dep.depend()
+              }
+              return val
+            },
+            set: (newVal) => {
+                if (newVal === value) {
+                    // 没有更新
+                    return
+                }
+                value = newVal
+                childObj = observe(newVal)
+                // 通知订阅者
+                dep.notify()
             }
         })
     }
 }
-function observe(data){
-    if (!data || typeof data !== 'object') {
-        return
+
+function observe(data, vm) {
+    if (!value || typeof data !== 'object') {
+        return console.warn(`data is not Object`)
     }
-    // 取出所有属性遍历
-    Object.keys(data).forEach(key => defineReactive(data, key, data[key]))
+    return new Observer(data)
 }
 
-function defineReactive(data, key, val) {
-    // 为data的每一个属性都定义订阅者
-    var dep = new Dep()
-    // 监听子属性
-    observe(val)
-    Object.defineProperty(data, key, {
-        enumerable: true, // 可枚举
-        configurable: false,  // 不能再define
-        get: function () {
-            Dep.target && dep.addSub(Dep.target)
-            return val
-        },
-        set: function (newVal) {
-            console.log('有变化', val, '--->', newVal)
-            val = newVal
-            // 数据有变化就通知订阅者，再调用调阅者的update
-            dep.notify()
-        }
-    })
-}
-
+// 定义Dep
+// 每一个data的属性都分配一个dep，每次get收集一个watcher,每次set通知所有的watcher进行更新
+var uid = 0
 class Dep {
     constructor () {
-        // Array<Watcher>
+        this.id = uid++
+        // 放watcher的array
         this.subs = []
-    }
-    addSub(sub) {
+    } 
+    addSub (sub) {
         this.subs.push(sub)
     }
-    notify(){
+    removeSub (sub) {
+        const index = this.subs.indexOf(sub)
+        if (!!~index) {
+            this.subs.splice(index, 1)
+        }
+    }
+    depend () {
+        // 只有新的依赖才要添加新的watcher
+        Dep.target.addDep(this)
+    }
+    notify () {
+        // set的时候通知所有的watcher (放在subs里面的那些)
         this.subs.forEach(sub => {
+            // watcher里有一个update的方法
             sub.update()
         })
     }
 }
+
+Dep.target = null
