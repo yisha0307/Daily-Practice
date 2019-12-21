@@ -8,8 +8,9 @@
 </head>
 <body>
     <div id='mvvm-app'>
-        <input type='text' v-model='word'>
-        <p>{{word}}</p>
+        <input type='text' v-model='child.someStr'>
+        <p>{{child.someStr}}</p>
+        <p v-html='htmlStr'></p>
         <button v-on:click='sayHi'>change model</button>
     </div>
     <!-- observer: 能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者 -->
@@ -22,11 +23,14 @@
     var vm = new MVVM({
         el: '#mvvm-app',
         data: {
-            word: 'Hello World!'
+            child: {
+                someStr: 'hello world!'
+            },
+            htmlStr: '<span style="color: #f00;">red</span>'
         },
         methods: {
             sayHi: function () {
-                this.word = 'hi, everyone!'
+                this.child.someStr = 'hello everyone!'
             }
         }
     })
