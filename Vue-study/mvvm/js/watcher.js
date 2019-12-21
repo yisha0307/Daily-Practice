@@ -8,6 +8,7 @@ class Watcher {
         this.vm = vm
         this.expOrFn = expOrFn
         this.cb = cb
+        // 收集dep
         this.depIds = {}
         
         if (typeof expOrFn === 'function') {
@@ -51,7 +52,7 @@ class Watcher {
         Dep.target = null
         return value
     }
-    parseGetter () {
+    parseGetter (exp) {
         if (/[^\w.$]/.test(exp)) return
         var exps = exp.split('.')
         return function(obj) {

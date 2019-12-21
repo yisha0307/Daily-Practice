@@ -8,7 +8,7 @@ class Observer {
         var me = this
         // 劫持value每一个属性的get和set
         Object.keys(value).forEach(key => {
-            me.convert(key, data[key])
+            me.convert(key, value[key])
         })
     }
     convert (key, value) {
@@ -30,7 +30,7 @@ class Observer {
                   // depend用于新增订阅者watcher
                   dep.depend()
               }
-              return val
+              return value
             },
             set: (newVal) => {
                 if (newVal === value) {
@@ -47,7 +47,7 @@ class Observer {
 }
 
 function observe(data, vm) {
-    if (!value || typeof data !== 'object') {
+    if (!data || typeof data !== 'object') {
         return console.warn(`data is not Object`)
     }
     return new Observer(data)

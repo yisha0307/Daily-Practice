@@ -1,5 +1,6 @@
+// 入口函数 -->
 // 作为整个MVVM框架的入口
-export function MVVM(options) {
+function MVVM(options) {
     // options: el, data, methods
     this.$options = options
     var data = this._data = this.$options.data,
