@@ -19,6 +19,8 @@ class Watcher {
         this.value = this.get()
     }
     update () {
+        // data set属性的时候，通过observer触发dep.notify()
+        // 从而通知所有的watcher(存在subs里面的那些)进行update
         this.run()
     }
     run () {

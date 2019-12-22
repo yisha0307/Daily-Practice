@@ -30,7 +30,6 @@ class Compile {
     // 并调用相应的指令更新函数进行绑定
     compileElement (el) {
         var childNodes = el.childNodes || []
-        console.log(childNodes)
         var me = this
         var nodesChild = [].slice.call(childNodes)
         nodesChild.forEach(function(node) {

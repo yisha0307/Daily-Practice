@@ -2,6 +2,7 @@
 class Observer {
     constructor (value) {
         this.data = value
+        this.dep = new Dep()
         this.walk(value)
     }
     walk (value) {
@@ -29,6 +30,12 @@ class Observer {
               if (Dep.target) {
                   // depend用于新增订阅者watcher
                   dep.depend()
+                  if (childObj) {
+                    //   子对象进行依赖收集
+                    // 其实就是将同一个watcher观察者实例放进了两个depend中，
+                    // 一个是闭包里的depend, 还有一个是子元素的depend
+                      childObj.dep.depend()
+                  }
               }
               return value
             },
@@ -48,7 +55,7 @@ class Observer {
 
 function observe(data, vm) {
     if (!data || typeof data !== 'object') {
-        return console.warn(`data is not Object`)
+        return
     }
     return new Observer(data)
 }
