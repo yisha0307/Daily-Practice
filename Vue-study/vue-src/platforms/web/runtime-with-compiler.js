@@ -41,7 +41,9 @@ Vue.prototype.$mount = function (
     if (template) {
       /*当template是字符串的时候*/
       if (typeof template === 'string') {
+        // #: id name
         if (template.charAt(0) === '#') {
+          // 找到id对应的template (idToTemplate会有一个缓存)
           template = idToTemplate(template)
           /* istanbul ignore if */
           if (process.env.NODE_ENV !== 'production' && !template) {
