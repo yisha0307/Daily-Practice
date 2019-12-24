@@ -50,8 +50,10 @@ function genStaticKeys (keys: string): Function {
 }
 
 /*处理所有非静态节点*/
+// mark每一个node的static是true还是false, 用于优化（如果是static不需要每次重新patch和渲染)
 function markStatic (node: ASTNode) {
   /*标记一个node节点是否是static的*/
+  // 返回一个boolean
   node.static = isStatic(node)
   if (node.type === 1) {
     // do not make component slot content static. this avoids
