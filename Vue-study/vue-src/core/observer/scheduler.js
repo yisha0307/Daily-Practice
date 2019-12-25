@@ -56,6 +56,7 @@ function flushSchedulerQueue () {
     2.一个组件的user watchers比render watcher先运行，因为user watchers往往比render watcher更早创建
     3.如果一个组件在父组件watcher运行期间被销毁，它的watcher执行将被跳过。
   */
+//  user watch是vue提供的api: watch, 还有computed watch 和 render watcher
   queue.sort((a, b) => a.id - b.id)
 
   // do not cache length because more watchers might be pushed

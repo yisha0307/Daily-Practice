@@ -69,6 +69,7 @@ export const hasSymbol =
     这个函数的作用是在task或者microtask中推入一个timerFunc，在当前调用栈执行完以后以此执行直到执行到timerFunc
     目的是延迟到当前调用栈执行完以后执行
 */
+// nextTick: 立即执行函数
 export const nextTick = (function () {
   /*存放异步执行的回调*/
   const callbacks = []
@@ -154,6 +155,7 @@ export const nextTick = (function () {
   return function queueNextTick (cb?: Function, ctx?: Object) {
     let _resolve
     /*cb存到callbacks中*/
+    // callbacks: 异步执行的回调array
     callbacks.push(() => {
       if (cb) {
         try {
@@ -167,6 +169,8 @@ export const nextTick = (function () {
     })
     if (!pending) {
       pending = true
+      // 执行nextTickHandler(promise/mutationObserver/setTimeout)
+      // 执行异步回调的时候把pending设置成false
       timerFunc()
     }
     if (!cb && typeof Promise !== 'undefined') {

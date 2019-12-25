@@ -40,6 +40,7 @@ let waiting = false
 function queueWatcher(watcher) {
     const id = watcher.id
     if (has[id] == null) {
+        // 如果是一样的id就不需要再塞入watcher了，因为只关心数据的最终结果，中间的变化不重要
         has[id] = true
         queue.push(watcher)
 
@@ -56,9 +57,12 @@ function queueWatcher(watcher) {
 function flushSchedulerQueue () {
     let watcher, id;
     for (index = 0; index < queue.length; index++) {
+        // nextTick执行queue里的每一个watch (watch.run())
+        // 然后把has[id]设成null，可以继续塞入watcher
         watcher = queue[index]
         id = watcher.id
         has[id] = null
+        // 更新视图
         watcher.run()
     }
     waiting = false
