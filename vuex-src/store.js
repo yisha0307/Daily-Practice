@@ -125,6 +125,11 @@ export class Store {
       return
     }
     /* 执行mutation中的所有方法 */
+    // _withCommit = fn => {
+    //   不完整code
+    //   this._committing = true
+    //   fn()
+    // }
     this._withCommit(() => {
       entry.forEach(function commitIterator (handler) {
         handler(payload)
@@ -162,6 +167,7 @@ export class Store {
     }
 
     /* 是数组则包装Promise形成一个新的Promise，只有一个则直接返回第0个 */
+    // 因为dispatch是异步的, 所以用promise
     return entry.length > 1
       ? Promise.all(entry.map(handler => handler(payload)))
       : entry[0](payload)
@@ -186,6 +192,7 @@ export class Store {
     if (process.env.NODE_ENV !== 'production') {
       assert(typeof getter === 'function', `store.watch only accepts a function.`)
     }
+    // _watchVM = new Vue()
     return this._watcherVM.$watch(() => getter(this.state, this.getters), cb, options)
   }
 
@@ -530,13 +537,18 @@ function getNestedState (state, path) {
 }
 
 function unifyObjectStyle (type, payload, options) {
+  // commit有两种：（dispatch也一样）
+  // commit(type: string, payload? any, options?: Object)
+  // commit(mutation: Object, options?: Object)
   if (isObject(type) && type.type) {
+    // 针对第二种commit做下处理
     options = payload
     payload = type
     type = type.type
   }
 
   if (process.env.NODE_ENV !== 'production') {
+    // commit的type必须是string
     assert(typeof type === 'string', `Expects string as the type, but found ${typeof type}.`)
   }
 
