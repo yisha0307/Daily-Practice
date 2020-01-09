@@ -8,3 +8,11 @@
 [图片懒加载原理及实现](https://www.jianshu.com/p/8e2a73638153)
 
 [一文看尽前端过去一年的精华沉淀](https://juejin.im/post/5dafa3d35188257b1549bad1#heading-11)
+
+[看看这些被同事喷的JS代码风格你写过多少](https://mp.weixin.qq.com/s/f6DHgoTGcCIaN3Orlq45LA)
+
+
+## 自己的整理
+
+[javascript pratice](./Module/practice01.js)
+[utils.js函数整理](./Module/utils.js)
