@@ -22,6 +22,7 @@ function throttle (fn, interval) {
     }
 }
 
+
 // debounce: 防抖
 // 在某段时间内，不管你触发了多少次回调，我都只认最后一次。
 function debounce (fn, delay) {
@@ -99,3 +100,4 @@ function cloneDeep (source) {
     }
     return target
 }
+
