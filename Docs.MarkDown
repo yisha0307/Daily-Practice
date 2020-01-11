@@ -20,6 +20,8 @@ func.call(context, p1, p2)
 ```
 - 第一种和第二种都是语法糖，可以等价的变为call形式。 func(p1, p2)等价于 func.call(undefined, p1, p2); obj.child.method(p1, p2)等价于obj.child.method.call(obj.child, p1, p2);
 
+[JS开发常用工具函数](https://segmentfault.com/a/1190000019601333)
+
 ## 自己的整理
 
 [javascript pratice](./Module/practice01.js)
