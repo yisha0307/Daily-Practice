@@ -62,7 +62,7 @@ Array.prototype.myReduce = myReduce
 const myFlat = function (arr) {
     return arr.reduce((result, item) => {
         if (Array.isArray(item)) {
-            return myFlat(item)
+            return [...result, ...myFlat.call(null, item)]
         } else {
             return [...result, item]
         }
@@ -101,4 +101,20 @@ const memory = function (fn) {
     return function (n) {
         return obj[n] ? obj[n] : obj[n] = fn(n)
     }
+}
+
+// 递归平铺数组
+function flattenArray (arr) {
+    const flattened = [].concat(...arr)
+    return flattened.some(item => Array.isArray(item)) ? flattenArray(flattened) : flattened
+}
+
+function myFlat(arr){
+    return arr.reduce((re,i) => {
+        if (Array.isArray(i)) {
+            return [...re, ...myFlat.call(null, i)]
+        } else {
+            return [...re, i]
+        }
+    }, [])
 }
