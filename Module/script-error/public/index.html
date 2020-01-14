@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Script Error</title>
+</head>
+<body>
+    <button id='btn-3000'>3000</button>
+    <button id='btn-4000'>4000</button>
+    <div>
+        <pre id='info'></pre>
+    </div>
+<script>
+    window.addEventListener('error', evt => {
+        let i
+        const info = (i = evt.error) && i.stack || evt.message
+        document.getElementById('info').textContent = info
+    })
+</script>
+<script src='http://127.0.0.1:3000/at3000.js'></script>
+<script src='http://127.0.0.1:4000/at4000.js'></script>
+</body>
+</html>

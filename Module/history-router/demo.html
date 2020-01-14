@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HISTORY API ROUTER</title>
+</head>
+<body>
+    <a class='route' href='/id1'>id1</a>
+    <a class='route' href = '/id2'>id2</a>
+    <a class='route' href = '/id3'>id3</a>
+    <div id='demo'>BLANK PAGE</div>
+<script type='module'>
+    const idTwo = `<div>RANDOM SOMETHING</div>`
+    class newRouter {
+        constructor () {
+            this.routes = {}
+            this.currentUrl = ''
+        }
+        route(path, callback) {
+            this.routes[path] = type => {
+                // pushState(state, title, url)
+                if (type === 1) history.pushState( { path }, path, path );
+                if (type === 2) history.replaceState( { path }, path, path )
+                callback()
+            }
+        }
+        refresh (type) {
+            this.routes[this.currentUrl] && this.routes[this.currentUrl](type)
+        }
+        init () {
+            window.addEventListener('load', () => {
+                this.currentUrl = window.location.href.slice(location.href.indexOf("/", 8))
+                this.refresh(2)
+            }, false) // false: 冒泡 default
+            // 仅仅用pushState和replaceState不会触发
+            // 只有用户点击浏览器倒退按钮和前进按钮，或者使用 JavaScript 调用 back 、 forward 、 go 方法时才会触发
+            window.addEventListener('popstate', () => {
+                console.log('POPSTATE')
+                this.currentUrl = history.state.path
+                this.refresh(2)
+            }, false)
+            const links = document.querySelectorAll('.route')
+            links.forEach(link => {
+                link.onclick = e => {
+                    e.preventDefault()
+                    this.currentUrl = e.target.getAttribute('href')
+                    debugger
+                    this.refresh(2)
+                }
+            })
+        }
+    }
+    const router = new newRouter()
+    const demodiv = document.getElementById('demo')
+    router.init()
+    router.route('/id1', () => {
+        demodiv.innerHTML = 'HAHA'
+    })
+    router.route('/id2', () =>{
+        demodiv.innerHTML = idTwo
+    })
+</script>
+</body>
+</html>

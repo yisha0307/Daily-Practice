@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HASH ROUTER TEST</title>
+</head>
+<body>
+    <a href='#/id1'>one</a>
+    <a href ='#/id2'>two</a>
+    <a href='#/id3'>three</a>
+    <div id='id'>BLANK PAGE</div>  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type='module'>
+    const fragmentDiv = `<div>DEMO2</div>`
+    class newRouter {
+        constructor () {
+            this.routes = {}
+            this.currentUrl = ''
+        }
+        // 传入router和callback
+        route (pathname, callback) {
+            this.routes[pathname] = callback
+        }
+        refresh () {
+            const hashName = location.hash.slice(1) || '/'
+            this.routes[hashName] && this.routes[hashName]()
+        }
+        init() {
+            window.addEventListener('load', this.refresh.bind(this), false)
+            window.addEventListener('hashchange', this.refresh.bind(this), false)
+        }
+    }
+    const router = new newRouter()
+    router.init()
+    router.route('/id1', () => {
+        document.getElementById('id').innerHTML = 'DEMO1'
+    })
+    router.route('/id2', () => {
+        document.getElementById('id').innerHTML = fragmentDiv
+    })
+    router.route('/id3', () => {
+        $.ajax({
+            url: './demo2.html',
+            success: res => {
+                document.getElementById('id').innerHTML = res
+            }
+        })
+    })
+</script>
+</body>
+</html>
