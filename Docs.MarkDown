@@ -39,6 +39,12 @@ func.call(context, p1, p2)
 
 [解决'script error'的另类思路](https://cloud.tencent.com/developer/article/1367170)
 
+[关于vuex的持久化](https://www.jianshu.com/p/7346a101332b)
+- 在plugin里注册事件，在每次mutation触发的时候同步更改localStorage（使用store.subscribe方法）
+- 如果localStorage里有值，就用store.replaceState更新掉
+
+[九种跨域方式实现原理（完整版）](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
+
 ## 自己的整理
 
 [javascript pratice](./Module/practice01.js)
