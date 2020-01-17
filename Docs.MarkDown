@@ -47,6 +47,15 @@ func.call(context, p1, p2)
 
 [CSS3 Flexbox 布局完全指南](https://www.html.cn/archives/8629)
 
+[webpack模块化原理-commonjs](https://segmentfault.com/a/1190000010349749)
+
+[](https://segmentfault.com/a/1190000018368885)
+- ** bundle splitting **: 创建更多更小的文件，并行加载，以获得更好的缓存效果，主要作用就是使浏览器并行下载，提高下载速度。并且运用浏览器缓存，只有代码被修改，文件名中的哈希值改变了才会去再次加载。
+(比如拆分成main.js和vendor.js, 把vendor.js拆分成各个npm包，把main.js根据业务场景也拆分成更小的包)
+- ** code splitting **：只加载用户最需要的部分，其余的代码都遵从懒加载的策略，主要的作用就是加快页面的加载速度，不加载不必要的代码。
+    - 最简单就是使用`import`或者`require`导入组件
+    - react里可以使用`React.lazy(() => import('/aComponent')`)
+
 ## 自己的整理
 
 [javascript pratice](./Module/practice01.js)
