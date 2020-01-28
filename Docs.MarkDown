@@ -50,6 +50,8 @@ func.call(context, p1, p2)
 
 [webpack模块化原理-commonjs](https://segmentfault.com/a/1190000010349749)
 
+[前后端常见的几种鉴权方式](https://blog.csdn.net/wang839305939/article/details/78713124/)
+
 [Web 性能优化： 使用 Webpack 分离数据的正确方法](https://segmentfault.com/a/1190000018368885)
 - ** bundle splitting **: 创建更多更小的文件，并行加载，以获得更好的缓存效果，主要作用就是使浏览器并行下载，提高下载速度。并且运用浏览器缓存，只有代码被修改，文件名中的哈希值改变了才会去再次加载。
 (比如拆分成main.js和vendor.js, 把vendor.js拆分成各个npm包，把main.js根据业务场景也拆分成更小的包)
