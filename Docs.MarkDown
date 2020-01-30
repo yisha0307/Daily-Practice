@@ -32,6 +32,7 @@ func.call(context, p1, p2)
 [微信小程序和PWA对比分析](https://blog.csdn.net/baidu_browser/article/details/64440238)
 
 [浏览器缓存机制](http://www.imooc.com/article/272542?mc_marking=57f1ecf96218fd14080e07535eb69916&mc_channel=weibo)
+![](https://user-gold-cdn.xitu.io/2018/9/20/165f701820fafcf8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 [SPA路由机制详解](https://www.cnblogs.com/liangyin/p/9686696.html)
 
