@@ -35,3 +35,52 @@ const JuejinLovers = new Proxy(girl, {
         }
     }
 })
+
+// 图片预加载(虚拟代理)
+class PreLoadImage {
+    constructor (imgNode) {
+        // 获取实例的对应的DOM节点
+        this.imgNode = imgNode
+    }
+    setSrc (imgUrl) {
+        this.imgNode.src = imgUrl
+    }
+}
+class ProxyImage {
+    static LOADING_URL = 'XXXXXX'
+    constructor(targetImage) {
+        this.targetImage = targetImage
+    }
+    // 用于设置真实的图片地址
+    setSrc(targetUrl) {
+        // img节点初始化时展示的是一个占位图
+        this.targetImage.setSrc(ProxyImage.LOADING_URL)
+        // 创建一个帮我们加载图片的Image实例
+        const image = new Image()
+        // 监听目标图片的加载情况，完成时将DOM上的img节点的src设成目标图片的url
+        image.onload = () => {
+            this.targetUrl.setSrc(targetUrl)
+        }
+        // 设置src属性，虚拟IMAGE实例开始加载图片
+        image.src = targetUrl
+    }
+}
+
+// 缓存代理
+const allAll = function () {
+    console.log('进行一次新计算')
+    let result = 0
+    const len = arguments.length
+    for (let i = 0; i< len; i++) {
+        result += arguments[i]
+    }
+    return result
+}
+// 为求和方法创建代理
+const proxyAddAll = (function () {
+    const resultCache = {}
+    return function () {
+        const args = Array.prototype.join.call(arguments, ',')
+        return resultCache.hasOwnProperty(args) ? resultCache[args] : resultCache[args] = addAll(...arguments)
+    }
+})()
