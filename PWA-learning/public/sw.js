@@ -68,3 +68,8 @@ self.addEventListener('activate', e => {
     // 注意不能忽略这行代码，否则第一次加载会导致fetch事件不触发
     return self.clients.claim();
 })
+
+// push(推送消息)
+// notification(展示提醒)
+// push service当用户离线的时候，可以帮助保存消息队列，直到联网后再发送给他们
+
