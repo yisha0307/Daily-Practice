@@ -1,0 +1,39 @@
+{
+    "name": "PWA的一个简单demo",
+    "short_name": "PWA demo",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#333",
+    "theme_color": "#5eace0",
+    "description": "一个简单的PWA小示例",
+    "icons": [{
+        "src": "img/icons/book-32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-72.png",
+        "sizes": "72x72",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+    }, {
+        "src": "img/icons/book-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }]
+}

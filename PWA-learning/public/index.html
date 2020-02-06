@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type ="text/css" href="./index.css" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="theme-color" content="#5eace0" />
+
+    <!-- 针对safari(ios)进行的相关设置 -->
+    <!-- safari不支持web app manifest -->
+    <meta name="apple-mobile-wep-app-capable" content="yes">
+    <meta name="apple-mobile-wep-app-status-bar-style" content="default">
+    <meta name="apple-mobile-wep-app-title" content="PWA DEMO">
+    <link rel="apple-touch-icon" href="img/icons/book-256.png">
+
+    <!-- 针对IE的处理方式 -->
+    <meta name="application-name" content="PWA DEMO">
+    <meta name="msapplication-TileColor" content="#222">
+    <meta name="msapplication-square70x70logo" content="img/icons/book-72.png" />
+    <meta name="msapplication-square150x150logo" content="img/icons/book-144.png" />
+    <meta name="msapplication-square310x310logo" content="img/icons/book-256.png" />
+
     <title>PWA learning</title>
 </head>
 <body>
-    <h1>PWA</h1>
+    <h1>BOOK SEARCH</h1>
+    <p>请输入想搜索的图书的名称</p>
+    <input id="book-search-input"/>
+    <button id='book-btn'>搜索</button>
+    <div id='result-field'></div>
+    <script type='text/javascript' src="./index.js"></script>
 </body>
 </html>
