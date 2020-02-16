@@ -26,6 +26,28 @@ router.post('/subscription', koaBody(), async ctx => {
         status: 0
     }
 })
+/**
+ * 消息推送API，可以在管理后台进行调用
+ * 为了方便起见，直接post一个请求来查看效果
+ */
+router.post('/push', koaBody(), async ctx => {
+    let payload = ctx.request.body
+    let list = await util.findAll()
+    let status = list.length ? 0 : -1
+    list.map(subscription => pushMessage(subscription, JSON.stringify(payload)))
+    ctx.response.body = {
+        status
+    }
+})
+
+/**
+ * 使用webpush
+ * 向push service发送请求
+ * @param {ServiceWorker subscription} subscription
+ * @param {Object} [data={}]
+ */
+function pushMessage (subscription, data = {}) {
+}
 app.use(router.routes())
 app.use(serve(__dirname + '/public')) // 放置静态资源
 app.listen(8086, () => {
