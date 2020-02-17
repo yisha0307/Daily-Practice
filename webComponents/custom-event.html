@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSTOM EVENT TEST</title>
+</head>
+<body>
+    <custom-event></custom-event>
+    <template id='templateEl'>
+        <div id = 'showContent'>1234</div>
+    </template>
+
+    <script>
+        class CustomEvent extends HTMLElement {
+            constructor () {
+                super()
+                var templateElem = document.getElementById('templateEl')
+                var content = templateElem.content.cloneNode(true)
+                this.appendChild(content)
+            }
+            connectedCallback () {
+                let evt = new CustomEvent('custom', {
+                    detail: {message: 'a custom event'},
+                    bubbles: true,
+                    cancelable: false
+                })
+                // debugger
+                this.dispatchEvent(evt)
+            }
+            insertContent (msg) {
+                document.getElementById('showContent').textContent = msg
+            }
+        }
+        window.customElements.define('custom-event', CustomEvent)
+        const ele = document.querySelector('custom-event')
+        ele.addEventListener('custom', e => console.log('message from event: ', e.detail.message))
+    </script>
+</body>
+</html>
