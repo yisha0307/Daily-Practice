@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLBUTTONELEMENT EXTEND</title>
+</head>
+<body>
+    <button is='my-button'></button>
+    <script>
+        // 对现有HTML ELEMENT的渐进式增强
+        // 目前只能支持chrome/firefox
+        class MyButton extends HTMLButtonElement {
+            constructor () {
+                super()  
+                this.innerHTML = 'TRY ME'
+            }
+            connectedCallback () {
+                const content = this.innerHTML
+                this.addEventListener('click', () => {
+                    alert(content)
+                })
+            }
+        }
+        customElements.define('my-button', MyButton, {extends: 'button'})
+    </script>
+</body>
+</html>
