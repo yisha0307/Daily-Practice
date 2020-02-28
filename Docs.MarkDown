@@ -73,6 +73,8 @@ optimization: {
     - 最简单就是使用`import`或者`require`导入组件
     - react里可以使用`React.lazy(() => import('/aComponent')`)
 
+- [Vue 3 源码导读](https://juejin.im/post/5d977f47e51d4578453274b3)
+
 ## 自己的整理
 
 [javascript pratice](./Module/practice01.js)
